@@ -1,0 +1,26 @@
+= RxSwift
+
+===== 설명
+* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1[RxSwiftExamples 1]
+** ReactiveX, RxSwift 이해
+* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples2[RxSwiftExamples 2]
+** RxSwift, RxCocoa 이용한 간단한 예제
+
+===== 참고
+* http://reactivex.io[ReactiveX]
+* https://videos.raywenderlich.com/courses/116-beginning-rxswift/lessons/1[Beginning RxSwift]
+* https://store.raywenderlich.com/products/rxswift[RxSwift eBook]
+* https://www.slideshare.net/devxoul/rxswift-81314827[RxSwift 시작하기: 전수열님 발표 자료]
+* https://www.slideshare.net/ChiwonSong/20171104-frp-81598173[Functional Reactive Programming Paradigm: 송치원님 발표 자료]
+* https://www.youtube.com/watch?v=cXi_CmZuBgg&feature=youtu.be[Functional Reactive Programming Paradigm: 송치원님 발표 영상]
+* https://www.slideshare.net/ChiwonSong/20180310-functional-programming[Functional Programming이 뭐하는 건가요?: 송치원님 발표 자료]
+* https://www.youtube.com/watch?v=HZkqMiwT-5A&feature=youtu.be[Functional Programming이 뭐하는 건가요?: 송치원님 발표 영상]
+* https://www.youtube.com/watch?v=HZkqMiwT-5A[Reactive Programming with Swift: 이선협님 영상]
+* https://www.slideshare.net/sunhyouplee/reactive-programming-with-swift[Reactive Programming with Swift: 이선협님 발표 자료]
+* https://www.youtube.com/watch?v=twoCv0vf4F0[RxSwift 시작하기: 최완복님 발표 영상]
+* https://www.slideshare.net/imyostarr/letswift-rxswift[RxSwift 시작하기: 최완복님 발표 자료]
+* https://www.youtube.com/watch?v=WN6s3xWZ3tw[RxSwift 활용하기: 최완복님 발표 영상]
+* https://www.slideshare.net/imyostarr/rxswift-letswift-2017[RxSwift 활용하기: 최완복님 발표 자료]
+* https://www.slideshare.net/devxoul/reactorkit/1[ReactorKit으로 단방향 반응형 앱 만들기: 전수열님 발표 자료]
+* https://www.youtube.com/watch?v=ASwBnMJNUK4#action=share[ReactorKit으로 단방향 반응형 앱 만들기: 전수열님 발표 영상] 
+* https://academy.realm.io/kr/posts/how-to-use-rxswift-with-simple-examples-ios-techtalk/[RxSwift 예제로 감잡기 : RxSwift 시작을 위한 간단한 예제들: 발표 영상, 자료]

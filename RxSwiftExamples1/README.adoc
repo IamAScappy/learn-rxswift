@@ -1,0 +1,96 @@
+= RxSwift
+
+===== ReactiveX
+* Rx.NET, RxJS, RxJava, RxRuby, RxKotlin, RxSwift 등등 20개 이상 존재함
+* 2009년 Rx.NET으로 ReactiveX가 시작함
+* RxSwift는 2015년부터 시작됨
+* *_ReactiveX = Reactive + Extension => 반응형 프로그래밍을 할 수 있게 해주는 확장팩_*
+
+===== RxSwift
+* 기본이 되는 도구
+** Observer Pattern
+** Iterator Pattern
+** Functional Programming
+*** 고차함수
+**** 함수가 다른 함수의 파라미터로 전달
+**** 함수가 다른 함수의 결과로 반환
+*** 순수함수
+**** 부작용이 발생하지 않는 함수
+**** 참조 투명성이 있는 함수
+
+image:../images/observer-pattern.png[45%, 45%]
+image:../images/iterator-pattern.png[45%, 45%]
+
+* Observables
+** Asynchronour Stream
+* *_Observables가 기본이 되는 Asynchronour Programming Library_*
+
+image:../images/rxswift-observables.png[]
+image:../images/marble-diagrams-1.png[45%, 45%]
+image:../images/marble-diagrams-2.png[45%, 45%]
+image:../images/observables.png[45%, 45%x]
+image:../images/observer.png[45%, 45%]
+
+===== iOS에서 비동기 처리가 필요한 경우
+* Button Taps
+* Keyboard Animations
+* Downloading Data
+* Processing Images
+* Writing on Disk
+* Playing Audio, Video
+* UI구성 요소 자체가 비동기적. iOS 앱을 만들 때 어떤 순서로 정하는 것은 불가능함. 일반적으로 iOS SDK API를 이용하여 처리함
+* _비동기 처리하기 위해 iOS에서 이용할 수 있는 SDK API_
+** Notification Center
+** KVO(= Key Value Observing), KVC(= Key Value Coding)
+** GCD
+** Operation Queues
+** Closures
+** Target-Action
+** Delegation
+
+image:../images/ios-async.png[]
+
+===== RxSwift 장, 단점
+* 장점
+** 선언형(Declarative)
+** 함수형(Functional)
+** 일관성 있는 패턴, 연산자
+** 가변상태(Mutable State)를 다룰 수 있음
+** 복잡도가 없음
+** 여러 플랫폼
+** Notification처럼 관찰하다가 변화가 생기면 반응함
+*** 따라서 비동기 코드를 핸들링하는 데 좋음
+*** 특정 프로퍼티 등 반응형 객체로 만든 후, 이벤트가 발생하면 이를 처리하기 위해 함수 적용함
+*** Delegation과 비교
+**** 수많은 프로토콜을 정의할 필요 없음
+*** Notification Center과 비교
+**** RxSwift는 Subscribe 함수만 부르면 되지만, NotificationCenter 생성할 때 4개 파라미터가 필요함
+*** Property Observer와 비교
+**** 두 개 이상 객체가 새로운 데이터에 신경쓰고 있으면 관찰자 영역이 복잡해짐
+**** RxSwift에서는 각각 함수 내에서 프로퍼티를 관찰할 수 있으므로 더 모듈화 할 수 있음
+* 단점
+** 러닝커브가 높음
+** 다른 라이브러리들과 의존성
+** 이해하지 않고 쓰면 문제가 발생할 수 있음
+** 만병통치약이 아님
+
+===== RxSwift 설치
+* CocoaPods 
+
+[source, bash]
+----
+platform :ios, '11.0'
+use_frameworks!
+
+target 'RxSwiftPlayground' do
+    pod 'RxSwift', '~> 4.0'
+end
+----
+
+* 프로젝트에서 RxSwift가 제대로 Import 되지 않으면 ?
+** Project Clean 
+** Project Clean으로도 문제가 해결되지 않는다면 _Command + , > Locations > Deviced Data의 경로를 확인_ 하고 해당 경로로 들어가 캐시된 프로젝트 파일을 지우고 해당 프로젝트 다시 염
+
+===== 예제
+* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1/RxSwiftExamples1/Examples[Examples]
+* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1/RxSwiftExamples1/Projects[Projects]
