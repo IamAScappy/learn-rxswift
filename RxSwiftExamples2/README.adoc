@@ -1,6 +1,6 @@
 = RxSwiftExamples2
 
-===== RxSwift 적용
+===== RxSwift, RxCocoa 적용
 * UIImage
 
 [source, swift]
@@ -43,50 +43,9 @@ override func viewDidLoad() {
             to: label.rx.text
         ).disposed(by: disposeBag)
 }
-
-
-
-
 ----
 
-
-===== Observer, Observable
-* RxSwift
-** Reaction - Action => Reaction 하기 위해 Action을 감시함
-** Observer => 관찰하는 주체(= 주어)
-** Observerable => 관찰되는 대상(= 목적어)
-
-* Subscribe, Emit, Dispose
-** Subscribe: Observer가 Obserable를 구독함
-** Observable가 이벤트 방출
-** Dispose: Observable의 Event 발행이 Complete되면 Dispose함
-
-* Observable
-** 요소가 가지고 있는 이벤트를 계속 방출함
-** Subscribers가 방출한 이벤트들에 대해 반응할 수 있음
-
-* Observable Life Cycle 
-** Next 
-*** Interger 또는 Tap
-** Error 
-*** Observable 종료됨
-** Completed 
-*** Observable 종료됨
-* Observable Events
-** 열거형으로 구성됨
-
-[source, swift]
-----
-public enum Event<Element> {
-    case next(Element)
-    case error(Swift.Error)
-    case completed
-}
-----
-
-image:../images/observable-life-cycle.png[]
-
-===== API Response 관찰
+* API Response 관찰
 
 [source, swift]
 ----
@@ -114,7 +73,7 @@ Observable<Model>.create { observer -> Disposable in
 }.disposed(by: disposeBag)
 ----
 
-===== KVO => Observable 변환
+* KVO => Observable 변환
 
 [source, swift]
 ----
@@ -129,11 +88,46 @@ self.label.rx.observe(String.self, "text")
     }.disposed(by: disposeBag)
 ----
 
+
+===== Observer, Observable
+* RxSwift
+** Reaction - Action => Reaction 하기 위해 Action을 감시함
+** Observer => 관찰하는 주체(= 주어)
+** Observerable => 관찰되는 대상(= 목적어)
+
+* Subscribe, Emit, Dispose
+** Subscribe => Observer가 Obserable를 구독함
+** Observable가 이벤트 방출
+** Dispose => Observable의 Event 발행이 Complete되면 Dispose함
+
+* Observable
+** 요소가 가지고 있는 이벤트를 계속 방출함
+** Subscribers가 방출한 이벤트들에 대해 반응할 수 있음
+
+* Observable Life Cycle 
+** Next => Interger 또는 Tap
+** Error => Observable 종료됨
+** Completed => Observable 종료됨
+* Observable Events
+** 열거형으로 구성됨
+
+[source, swift]
+----
+public enum Event<Element> {
+    case next(Element)
+    case error(Swift.Error)
+    case completed
+}
+----
+
+image:../images/observable-life-cycle.png[]
+
+
 ===== Dispose
 * dispose() => 즉시 처분
 * DisposeBag => Disposable 들을 모아두다가 한번에 처분함
 
-===== Observable 생성하는 방법
+===== Observable 생성
 * just 
 * from
 * of
@@ -144,19 +138,19 @@ self.label.rx.observe(String.self, "text")
 * repeatElement
 * interval 
 
-===== PublishSubject
-* Observer, Observable 동시 구현
-** On, Subscribe 둘 다 할 수 있음
-* 스스로 일어나는 이벤트가 아닐 때 사용함 => 이벤트를 외부에서 전달해주는 경우 사용함
-* Delegate 대신 사용하기도 함
-
-===== BehaviorSubject
-* 초기값이 1개
-* 마지막 Event를 꺼내올 수 있음
-* Subscribe와 상관없이 데이터에 접근해서 사용해야 하는 경우 => Datasource
+===== Subjects
+* PublishSubject
+** Observer, Observable 동시 구현
+*** On, Subscribe 둘 다 할 수 있음
+** 스스로 일어나는 이벤트가 아닐 때 사용함 => 이벤트를 외부에서 전달해주는 경우 사용함
+** Delegate 대신 사용하기도 함
+* BehaviorSubject
+** 초기값이 1개
+** 마지막 Event를 꺼내올 수 있음
+** Subscribe와 상관없이 데이터에 접근해서 사용해야 하는 경우 => Datasource
 
 ===== Transforming
-* Map
+* http://rxmarbles.com/#map[map]
 
 [source, swift]
 ----
@@ -171,6 +165,7 @@ Observable.from([1, 2, 3, 4, 5].map { "\($0)" }
 [source, swift]
 ----
 // 이벤트를 다른 Observable로 바꿈
+// map을 사용하면 Observable이 아니라 nil을 리턴하지만, flatMap을 사용하면 Observable를 리턴해야 함 
 func flatMap<O: ObservableConvertibleType>(_ selector: @escaping (E) -> O) -> Observable<O.E>
 
 // Button Tap Observable => API Call Observable로 바꿈
@@ -184,10 +179,23 @@ button.rx.tap.asObservable()
     }).disposed(by: disposeBag)
 ----
 
-* map을 사용하면 Observable이 아니라 nil을 리턴하지만, flatMap을 사용하면 Observable를 리턴해야 함
+* window
+
+[source, swift]
+----
+// window, buffer와 아주 밀접함. 거의 같지만 다른 점은 Observable 방출한다는 차이점이 존재함
+let numberObservable = Observable.merge(numberObservables)
+    
+let inputtedNumberObservable = numberObservable.window(timeSpan: 3600 * 24, count: 2, scheduler: MainScheduler.instance)
+    .flatMap { window -> Observable<Int> in
+        return window.scan(0, accumulator: { (anwser, event) -> Int in
+            return (anwser * 10) + event
+        })
+    }
+----
 
 ===== Filtering 
-* filter
+* http://rxmarbles.com/#filter[filter]
 
 [source, swift]
 ----
@@ -197,7 +205,7 @@ Observable.from([1, 2, 3, 4, 5]).filter { (value) -> Bool in
 }
 ----
 
-* take(n)
+* http://rxmarbles.com/#take[take(n)]
 
 [source, swift]
 ----
@@ -205,7 +213,7 @@ Observable.from([1, 2, 3, 4, 5]).filter { (value) -> Bool in
 Observable.from([1, 2, 3, 4, 5].take(1)
 ----
 
-* skip(n)
+* http://rxmarbles.com/#skip[skip(n)]
 
 [source, swift]
 ----
@@ -213,9 +221,7 @@ Observable.from([1, 2, 3, 4, 5].take(1)
 Observable.from([1, 2, 3, 4, 5].skip(1)
 ----
 
-image:../images/skip.png[]
-
-* distinctUntilChange
+* http://rxmarbles.com/#distinctUntilChanged[distinctUntilChange]
 
 [source, swift]
 ----
@@ -223,30 +229,74 @@ image:../images/skip.png[]
 Observable.from([true, true, false, false, true].distincUntilChange()
 ----
 
-image:../images/distinctUntilChange.png[]
-
 ===== Combination
-* merge => 이벤트 타입이 같은 Observable 여러 개를 합침. 합쳐진 이벤트는 이벤트 타입이 같은 것을 합쳤기 때문에 하나의 이벤트만 발생함
-* zip => Observable에서 이벤트 한 쌍씩 순서대로 합쳐 이벤트를 발생함
-* combineLatest => 두 개 Observable에서 가장 최근에 발생한 이벤트를 합침. 이벤트 타입이 달라도 됨
-* withLatestFrom => 두 개 Observable를 합성하지만 하나 Observable에서 이벤트가 발생할 때 합성함. 이벤트가 발생하지 않으면 skip함
-
-===== Bind
-* 자주 사용할 subscribe 내용을 Binder로 만들어 두면 bind를 사용할 수 있음
-** label.rx.text, UIView에서 사용하는 여러 Property
-* subscribe Wrapper, subsribe와 bind 차이점은 bind는 값 바인딩 하나밖에 못하지만 subscribe에서 여러가지 일을 할 수 있음
+* http://rxmarbles.com/#merge[merge]
 
 [source, swift]
 ----
+// 이벤트 타입이 같은 Observable 여러 개를 합침. 합쳐진 이벤트는 이벤트 타입이 같은 것을 합쳤기 때문에 하나의 이벤트만 발생함
+let numberObservables = numberButtons.enumerated().map { (index, button) -> Observable<Int> in
+        button.rx.tap.map { index + 1 }
+    }
+    
+let numberObservable = Observable.merge(numberObservables)
+----
+
+
+* http://rxmarbles.com/#zip[zip] 
+
+[source, swift]
+----
+// Observable에서 이벤트 한 쌍씩 순서대로 합쳐 이벤트를 발생함
+----
+
+* http://rxmarbles.com/#combineLatest[combineLatest]
+
+[source, swift]
+----
+// 두 개 Observable에서 가장 최근에 발생한 이벤트를 합침. 이벤트 타입이 달라도 됨
+Observable.combineLatest([aValueObservable, bValueObservable, cValueObservable]) { (values) -> Int in
+    return values.reduce(0, +)
+}.map { "\($0)" }.subscribe { [weak self] event in
+    switch event {
+    case .next(let value):
+        self?.resultLabel.text = value
+    default:
+        break
+    }
+}.disposed(by: disposeBag)
+----
+
+* http://rxmarbles.com/#withLatestFrom[withLatestFrom] 
+ 
+[source, swift]
+----
+// 두 개 Observable를 합성하지만 하나 Observable에서 이벤트가 발생할 때 합성함. 이벤트가 발생하지 않으면 skip함
+// 사이드 효과를 없애줌
+secondNumberObservable
+    .withLatestFrom(firstNumberObservable) { (second, first) -> Int in
+        return second * first
+    }
+    .map { "\($0)" }
+    .bind(to: resultNumberLabel.rx.text)
+    .disposed(by: disposeBag)
+----
+
+===== Binding
+* 자주 사용할 subscribe 내용을 Binder로 만들어 두면 bind를 사용할 수 있음
+** label.rx.text, UIView에서 사용하는 여러 Property
+
+[source, swift]
+----
+// bind
+// - subscribe Wrapper, subsribe와 bind 차이점은 bind는 값 바인딩 하나밖에 못하지만 subscribe에서 여러가지 일을 할 수 있음
 textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
     guard let intValue = Int(text) else { return Observable.empty() }
     
     return Observable.just(intValue)
 }.flatMap { dan -> Observable<String> in
-    // range를 통해 9개 이벤트가 발생하고 한개를 합쳐야 함
     return Observable<Int>.range(start: 1, count: 9).map { step -> String in
-    return "\(dan) * \(step) = \(dan * step)"
-    // Array, Dictionary가 가지고 있는 reduce 메서드와 비슷함
+        return "\(dan) * \(step) = \(dan * step)"
     }.reduce("", accumulator: { (answer, next) -> String in
         return answer + "\n" + next
     })
@@ -257,15 +307,28 @@ textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
 // subscribe에서 결과를 바인드 하는 것과 같은 역할을 함
 .bind(to: label.rx.text)
 .disposed(by: disposeBag)
+
+// Binder
+// - Boxing: view.rx.animation
+// - Binder 안에서 코드가 길어지는 것을 경계해야 함
+extension Reactive where Base: UIView {
+    var animation: Binder<Animation> {
+        return Binder(self.base, binding: { (view, animation) in
+            UIView.animate(withDuration: 0.5) {
+                view.transform = animation.transform(view.transform)
+            }
+        })
+    }
+}
 ----
 
 ===== ControlProperty
 * Data와 User Interface를 연결할 때 Rx Extension을 통해 사용함
-* orEmpty 프로퍼티
-** Optional인 경우 이벤트가 발생하지 않음
 
 [source, swift]
 ----
+// orEmpty
+// - Optional인 경우 이벤트가 발생하지 않음
 textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
   guard let intValue = Int(text) else { return Observable.empty() }
     
@@ -279,3 +342,5 @@ textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
 image:../images/sum-of-digits.gif[24%, 24%]
 image:../images/times-table-1.gif[24%, 24%]
 image:../images/times-table-2.gif[24%, 24%]
+image:../images/times-table-3.gif[24%, 24%]
+image:../images/animation.gif[24%, 24%]
