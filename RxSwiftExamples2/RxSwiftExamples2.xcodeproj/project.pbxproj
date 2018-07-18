@@ -15,6 +15,8 @@
 		8793E77320F0A19B003C43C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8793E77220F0A19B003C43C4 /* Assets.xcassets */; };
 		8793E77620F0A19B003C43C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8793E77420F0A19B003C43C4 /* LaunchScreen.storyboard */; };
 		8798340320FCE6C600EA700C /* TimesTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8798340220FCE6C600EA700C /* TimesTableViewController2.swift */; };
+		87ECB52320FF02CD002264E9 /* TimesTableViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB52220FF02CD002264E9 /* TimesTableViewController3.swift */; };
+		87ECB52520FF0F95002264E9 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB52420FF0F95002264E9 /* AnimationViewController.swift */; };
 		8B314166A17FD2F29D685435 /* Pods_RxSwiftExamples2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C65876779D8192E58AA6A1B /* Pods_RxSwiftExamples2.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,8 @@
 		8793E77520F0A19B003C43C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8793E77720F0A19C003C43C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8798340220FCE6C600EA700C /* TimesTableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesTableViewController2.swift; sourceTree = "<group>"; };
+		87ECB52220FF02CD002264E9 /* TimesTableViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesTableViewController3.swift; sourceTree = "<group>"; };
+		87ECB52420FF0F95002264E9 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		8C65876779D8192E58AA6A1B /* Pods_RxSwiftExamples2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftExamples2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60CDBC6E5B6CBA0E8F3BFD6 /* Pods-RxSwiftExamples2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExamples2.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExamples2/Pods-RxSwiftExamples2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +89,8 @@
 				8781B91620F9B35F009DE4E6 /* TableViewController.swift */,
 				8723B82620FB91F2001EC706 /* TimesTableViewController1.swift */,
 				8798340220FCE6C600EA700C /* TimesTableViewController2.swift */,
+				87ECB52220FF02CD002264E9 /* TimesTableViewController3.swift */,
+				87ECB52420FF0F95002264E9 /* AnimationViewController.swift */,
 			);
 			path = RxSwiftExamples2;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 			files = (
 				8793E76E20F0A19B003C43C4 /* ViewController.swift in Sources */,
 				8723B82720FB91F2001EC706 /* TimesTableViewController1.swift in Sources */,
+				87ECB52520FF0F95002264E9 /* AnimationViewController.swift in Sources */,
+				87ECB52320FF02CD002264E9 /* TimesTableViewController3.swift in Sources */,
 				8798340320FCE6C600EA700C /* TimesTableViewController2.swift in Sources */,
 				8781B91720F9B35F009DE4E6 /* TableViewController.swift in Sources */,
 				8793E76C20F0A19B003C43C4 /* AppDelegate.swift in Sources */,
