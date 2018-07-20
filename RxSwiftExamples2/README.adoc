@@ -336,11 +336,3 @@ textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
 }.
 // ...
 ----
-
-===== 예제
-
-image:../images/sum-of-digits.gif[24%, 24%]
-image:../images/times-table-1.gif[24%, 24%]
-image:../images/times-table-2.gif[24%, 24%]
-image:../images/times-table-3.gif[24%, 24%]
-image:../images/animation.gif[24%, 24%]
