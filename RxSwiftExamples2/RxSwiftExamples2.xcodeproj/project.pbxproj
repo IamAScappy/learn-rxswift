@@ -10,6 +10,7 @@
 		8723B82720FB91F2001EC706 /* TimesTableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8723B82620FB91F2001EC706 /* TimesTableViewController1.swift */; };
 		8781B91720F9B35F009DE4E6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781B91620F9B35F009DE4E6 /* TableViewController.swift */; };
 		87860B75210A0FCA00FAAD50 /* DownloadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87860B74210A0FCA00FAAD50 /* DownloadImageViewController.swift */; };
+		87860B77210A182A00FAAD50 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87860B76210A182A00FAAD50 /* GroupListViewController.swift */; };
 		8793E76C20F0A19B003C43C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793E76B20F0A19B003C43C4 /* AppDelegate.swift */; };
 		8793E76E20F0A19B003C43C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793E76D20F0A19B003C43C4 /* ViewController.swift */; };
 		8793E77120F0A19B003C43C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8793E76F20F0A19B003C43C4 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		8723B82620FB91F2001EC706 /* TimesTableViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesTableViewController1.swift; sourceTree = "<group>"; };
 		8781B91620F9B35F009DE4E6 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		87860B74210A0FCA00FAAD50 /* DownloadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewController.swift; sourceTree = "<group>"; };
+		87860B76210A182A00FAAD50 /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		8793E76820F0A19B003C43C4 /* RxSwiftExamples2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftExamples2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8793E76B20F0A19B003C43C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8793E76D20F0A19B003C43C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				87ECB52220FF02CD002264E9 /* TimesTableViewController3.swift */,
 				87ECB52420FF0F95002264E9 /* AnimationViewController.swift */,
 				87860B74210A0FCA00FAAD50 /* DownloadImageViewController.swift */,
+				87860B76210A182A00FAAD50 /* GroupListViewController.swift */,
 			);
 			path = RxSwiftExamples2;
 			sourceTree = "<group>";
@@ -201,13 +204,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftExamples2/Pods-RxSwiftExamples2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +232,7 @@
 				8793E76E20F0A19B003C43C4 /* ViewController.swift in Sources */,
 				87860B75210A0FCA00FAAD50 /* DownloadImageViewController.swift in Sources */,
 				8723B82720FB91F2001EC706 /* TimesTableViewController1.swift in Sources */,
+				87860B77210A182A00FAAD50 /* GroupListViewController.swift in Sources */,
 				87ECB52520FF0F95002264E9 /* AnimationViewController.swift in Sources */,
 				87ECB52320FF02CD002264E9 /* TimesTableViewController3.swift in Sources */,
 				8798340320FCE6C600EA700C /* TimesTableViewController2.swift in Sources */,
@@ -377,10 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T393J4TVCC;
 				INFOPLIST_FILE = RxSwiftExamples2/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuaming.RxSwiftExamples2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -396,10 +401,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T393J4TVCC;
 				INFOPLIST_FILE = RxSwiftExamples2/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuaming.RxSwiftExamples2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
