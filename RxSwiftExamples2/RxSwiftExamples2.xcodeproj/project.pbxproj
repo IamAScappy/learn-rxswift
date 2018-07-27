@@ -19,6 +19,10 @@
 		8798340320FCE6C600EA700C /* TimesTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8798340220FCE6C600EA700C /* TimesTableViewController2.swift */; };
 		87ECB52320FF02CD002264E9 /* TimesTableViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB52220FF02CD002264E9 /* TimesTableViewController3.swift */; };
 		87ECB52520FF0F95002264E9 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB52420FF0F95002264E9 /* AnimationViewController.swift */; };
+		87EE33A5210B592B00DC02AE /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE33A4210B592A00DC02AE /* ColorViewController.swift */; };
+		87EE33A7210B62CC00DC02AE /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE33A6210B62CC00DC02AE /* ColorsViewController.swift */; };
+		87EE33A9210B69BD00DC02AE /* ImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE33A8210B69BD00DC02AE /* ImagePickerController+Rx.swift */; };
+		87EE33AB210B69CC00DC02AE /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE33AA210B69CC00DC02AE /* ImagePickerViewController.swift */; };
 		8B314166A17FD2F29D685435 /* Pods_RxSwiftExamples2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C65876779D8192E58AA6A1B /* Pods_RxSwiftExamples2.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,10 @@
 		8798340220FCE6C600EA700C /* TimesTableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesTableViewController2.swift; sourceTree = "<group>"; };
 		87ECB52220FF02CD002264E9 /* TimesTableViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesTableViewController3.swift; sourceTree = "<group>"; };
 		87ECB52420FF0F95002264E9 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		87EE33A4210B592A00DC02AE /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
+		87EE33A6210B62CC00DC02AE /* ColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
+		87EE33A8210B69BD00DC02AE /* ImagePickerController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePickerController+Rx.swift"; sourceTree = "<group>"; };
+		87EE33AA210B69CC00DC02AE /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		8C65876779D8192E58AA6A1B /* Pods_RxSwiftExamples2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftExamples2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60CDBC6E5B6CBA0E8F3BFD6 /* Pods-RxSwiftExamples2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExamples2.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExamples2/Pods-RxSwiftExamples2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +105,10 @@
 				87ECB52420FF0F95002264E9 /* AnimationViewController.swift */,
 				87860B74210A0FCA00FAAD50 /* DownloadImageViewController.swift */,
 				87860B76210A182A00FAAD50 /* GroupListViewController.swift */,
+				87EE33A4210B592A00DC02AE /* ColorViewController.swift */,
+				87EE33A6210B62CC00DC02AE /* ColorsViewController.swift */,
+				87EE33A8210B69BD00DC02AE /* ImagePickerController+Rx.swift */,
+				87EE33AA210B69CC00DC02AE /* ImagePickerViewController.swift */,
 			);
 			path = RxSwiftExamples2;
 			sourceTree = "<group>";
@@ -232,11 +244,15 @@
 				8793E76E20F0A19B003C43C4 /* ViewController.swift in Sources */,
 				87860B75210A0FCA00FAAD50 /* DownloadImageViewController.swift in Sources */,
 				8723B82720FB91F2001EC706 /* TimesTableViewController1.swift in Sources */,
+				87EE33A9210B69BD00DC02AE /* ImagePickerController+Rx.swift in Sources */,
+				87EE33A7210B62CC00DC02AE /* ColorsViewController.swift in Sources */,
 				87860B77210A182A00FAAD50 /* GroupListViewController.swift in Sources */,
 				87ECB52520FF0F95002264E9 /* AnimationViewController.swift in Sources */,
+				87EE33AB210B69CC00DC02AE /* ImagePickerViewController.swift in Sources */,
 				87ECB52320FF02CD002264E9 /* TimesTableViewController3.swift in Sources */,
 				8798340320FCE6C600EA700C /* TimesTableViewController2.swift in Sources */,
 				8781B91720F9B35F009DE4E6 /* TableViewController.swift in Sources */,
+				87EE33A5210B592B00DC02AE /* ColorViewController.swift in Sources */,
 				8793E76C20F0A19B003C43C4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +401,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T393J4TVCC;
 				INFOPLIST_FILE = RxSwiftExamples2/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuaming.RxSwiftExamples2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -401,7 +420,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T393J4TVCC;
 				INFOPLIST_FILE = RxSwiftExamples2/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuaming.RxSwiftExamples2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
