@@ -344,11 +344,12 @@ goButton.rx.tap.asObservable().flatMap { [weak self] _ -> Observable<Void> in
 * https://reactivex.io/documentation/scheduler.html[Schedular]
 ** Operator Chaining에서 멀티 스레드를 적용하고 싶다면 스케줄을 지정하면 됨
 * 종류
-** CurrentThreadScheduler => 현재 스레드에 있는 작업 단위들의 스케쥴. 기본 스케줄
-** MainScheduler => 메인 스레드에서 작업하는 스케줄. UI 작업에서 많이 사용함. SerialDispatchQueueScheduler의 인스턴스 중 하나
-** SerialDispatchQueueScheduler => 특정 _dispatch_queue_t_ 에서 실행되어야 하는 추상적인 작업에서 사용함. ConcurrentDispatchQueueScheduler에서 전달된 경우도 SerialDispatchQueueScheduler로 변환함. observeOn을 위해 특정 최적화를 가능하게 함
-** ConcurrentDispatchQueueScheduler => 특정 _dispatch_queue_t_ 에서 실행되어야 하는 추상적인 작업에서 사용함. SerialDispatchQueueScheduler 보내도 아무런 문제가 발생하지 않음. Background 작업에서 사용하는 것이 적합함
-** OperationQueueScheduler => _NSOperationQueue_ 에서 사용함. 어떤 큰 덩어리의 작업이 있고 이 작업이 백그라운드에서 실행되어야 하며 _maxConcurrentOperationCount_ 이용해서 Concurrent 처리 과정에서 미세 조정하고 싶을 때 적합함
+** CurrentThreadScheduler(Serial) => 현재 스레드에 있는 작업 단위들의 스케쥴. 기본 스케줄
+** MainScheduler(Serial) => 메인 스레드에서 작업하는 스케줄. UI 작업에서 많이 사용함. SerialDispatchQueueScheduler의 인스턴스 중 하나
+** SerialDispatchQueueScheduler(Serial) => 특정 _dispatch_queue_t_ 에서 실행되어야 하는 추상적인 작업에서 사용함. ConcurrentDispatchQueueScheduler에서 전달된 경우도 SerialDispatchQueueScheduler로 변환함. observeOn을 위해 특정 최적화를 가능하게 함
+** ConcurrentDispatchQueueScheduler(Concurrent) => 특정 _dispatch_queue_t_ 에서 실행되어야 하는 추상적인 작업에서 사용함. SerialDispatchQueueScheduler 보내도 아무런 문제가 발생하지 않음. Background 작업에서 사용하는 것이 적합함
+** OperationQueueScheduler(Concurrent) => _NSOperationQueue_ 에서 사용함. 어떤 큰 덩어리의 작업이 있고 이 작업이 백그라운드에서 실행되어야 하며 _maxConcurrentOperationCount_ 이용해서 Concurrent 처리 과정에서 미세 조정하고 싶을 때 적합함
+* https://github.com/yuaming/learn-rxswift/issues/3[Atomic, Nonatomic 정리]
 
 ===== ControlProperty
 * Data와 User Interface를 연결할 때 Rx Extension을 통해 사용함
