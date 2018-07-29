@@ -367,6 +367,6 @@ textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
 ----
 
 === 참고
-* http://blog.weirdx.io/post/26576[[ReactiveX][RxSwift]observeOn, subscribeOn – 작업 스레드 지정하기]
+* http://blog.weirdx.io/post/26576[observeOn, subscribeOn – 작업 스레드 지정하기]
 * https://pilgwon.github.io/blog/2017/10/14/RxSwift-By-Examples-4-Multithreading.html[예제로 시작하는 RxSwift #4 – 멀티스레딩]
 * https://www.thedroidsonroids.com/blog/ios/rxswift-examples-4-multithreading/[RxSwift by Examples #4 – Multithreading.]
