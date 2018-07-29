@@ -127,7 +127,7 @@ image:../images/observable-life-cycle.png[]
 * dispose() => 즉시 처분
 * DisposeBag => Disposable 들을 모아두다가 한번에 처분함
 
-===== Observable 생성
+===== Creating Observables
 * just 
 * from
 * of
@@ -149,8 +149,8 @@ image:../images/observable-life-cycle.png[]
 ** 마지막 Event를 꺼내올 수 있음
 ** Subscribe와 상관없이 데이터에 접근해서 사용해야 하는 경우 => Datasource
 
-===== Transforming
-* http://rxmarbles.com/#map[map]
+===== Transforming Observables
+* https://reactivex.io/documentation/operators/map.html[Map]
 
 [source, swift]
 ----
@@ -160,7 +160,7 @@ public func map<R>(_ transform: (E) -> R) -> Observable<R>
 Observable.from([1, 2, 3, 4, 5].map { "\($0)" }
 ----
 
-* flatMap
+* https://reactivex.io/documentation/operators/groupby.html[FlatMap]
 
 [source, swift]
 ----
@@ -179,7 +179,7 @@ button.rx.tap.asObservable()
     }).disposed(by: disposeBag)
 ----
 
-* window
+* https://reactivex.io/documentation/operators/window.html[Window]
 
 [source, swift]
 ----
@@ -194,8 +194,8 @@ let inputtedNumberObservable = numberObservable.window(timeSpan: 3600 * 24, coun
     }
 ----
 
-===== Filtering 
-* http://rxmarbles.com/#filter[filter]
+===== Filtering Observables
+* https://reactivex.io/documentation/operators/filter.html[Filter]
 
 [source, swift]
 ----
@@ -205,7 +205,7 @@ Observable.from([1, 2, 3, 4, 5]).filter { (value) -> Bool in
 }
 ----
 
-* http://rxmarbles.com/#take[take(n)]
+* https://reactivex.io/documentation/operators/take.html[Take]
 
 [source, swift]
 ----
@@ -213,7 +213,7 @@ Observable.from([1, 2, 3, 4, 5]).filter { (value) -> Bool in
 Observable.from([1, 2, 3, 4, 5].take(1)
 ----
 
-* http://rxmarbles.com/#skip[skip(n)]
+* https://reactivex.io/documentation/operators/skip.html[Skip]
 
 [source, swift]
 ----
@@ -221,16 +221,16 @@ Observable.from([1, 2, 3, 4, 5].take(1)
 Observable.from([1, 2, 3, 4, 5].skip(1)
 ----
 
-* http://rxmarbles.com/#distinctUntilChanged[distinctUntilChange]
+* http://rxmarbles.com/#distinctUntilChanged[distinctUntilChanged]
 
 [source, swift]
 ----
 // 이벤트 값이 변경될 때 이벤트를 발생시킴
-Observable.from([true, true, false, false, true].distincUntilChange()
+Observable.from([true, true, false, false, true].distinctUntilChanged()
 ----
 
 ===== Combination
-* http://rxmarbles.com/#merge[merge]
+* https://reactivex.io/documentation/operators/merge.html[Merge]
 
 [source, swift]
 ----
@@ -243,14 +243,14 @@ let numberObservable = Observable.merge(numberObservables)
 ----
 
 
-* http://rxmarbles.com/#zip[zip] 
+* https://reactivex.io/documentation/operators/zip.html[Zip] 
 
 [source, swift]
 ----
 // Observable에서 이벤트 한 쌍씩 순서대로 합쳐 이벤트를 발생함
 ----
 
-* http://rxmarbles.com/#combineLatest[combineLatest]
+* https://reactivex.io/documentation/operators/combinelatest.html[CombineLatest]
 
 [source, swift]
 ----
@@ -267,7 +267,7 @@ Observable.combineLatest([aValueObservable, bValueObservable, cValueObservable])
 }.disposed(by: disposeBag)
 ----
 
-* http://rxmarbles.com/#withLatestFrom[withLatestFrom] 
+* http://rxmarbles.com/#withLatestFrom[WithLatestFrom] 
  
 [source, swift]
 ----
@@ -322,6 +322,34 @@ extension Reactive where Base: UIView {
 }
 ----
 
+===== Observable Utility Operators
+* https://reactivex.io/documentation/operators/observeon.html[ObserveOn]
+** Observable이 Observer에게 알림을 보낼 때 사용할 스레드를 명시함
+
+[source, swift]
+----
+goButton.rx.tap.asObservable().flatMap { [weak self] _ -> Observable<Void> in
+    return self?.rx.showAlert(title: "다운로드", message: "다운로드 하시겠습니까?") ?? Observable.empty()
+
+// SerialDispatchQueueScheduler: Main에서 Background로 넘어감
+}.observeOn(SerialDispatchQueueScheduler(qos: .background))
+----
+
+* https://reactivex.io/documentation/operators/subscribeon.html[SubscribeOn]
+** 다른 스케줄러를 지정해서 Observable이 처리해야 할 연산자들을 실행함
+** `[ReactiveX][RxSwift]observeOn, subscribeOn – 작업 스레드 지정하기 링크 참고`
+** `예제로 시작하는 RxSwift #4 – 멀티스레딩 링크 참고`
+
+===== Schedular
+* https://reactivex.io/documentation/scheduler.html[Schedular]
+** Operator Chaining에서 멀티 스레드를 적용하고 싶다면 스케줄을 지정하면 됨
+* 종류
+** CurrentThreadScheduler => 현재 스레드에 있는 작업 단위들의 스케쥴. 기본 스케줄
+** MainScheduler => 메인 스레드에서 작업하는 스케줄. UI 작업에서 많이 사용함. SerialDispatchQueueScheduler의 인스턴스 중 하나
+** SerialDispatchQueueScheduler => 특정 _dispatch_queue_t_ 에서 실행되어야 하는 추상적인 작업에서 사용함. ConcurrentDispatchQueueScheduler에서 전달된 경우도 SerialDispatchQueueScheduler로 변환함. observeOn을 위해 특정 최적화를 가능하게 함
+** ConcurrentDispatchQueueScheduler => 특정 _dispatch_queue_t_ 에서 실행되어야 하는 추상적인 작업에서 사용함. SerialDispatchQueueScheduler 보내도 아무런 문제가 발생하지 않음. Background 작업에서 사용하는 것이 적합함
+** OperationQueueScheduler => _NSOperationQueue_ 에서 사용함. 어떤 큰 덩어리의 작업이 있고 이 작업이 백그라운드에서 실행되어야 하며 _maxConcurrentOperationCount_ 이용해서 Concurrent 처리 과정에서 미세 조정하고 싶을 때 적합함
+
 ===== ControlProperty
 * Data와 User Interface를 연결할 때 Rx Extension을 통해 사용함
 
@@ -336,3 +364,8 @@ textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
 }.
 // ...
 ----
+
+=== 참고
+* http://blog.weirdx.io/post/26576[[ReactiveX][RxSwift]observeOn, subscribeOn – 작업 스레드 지정하기]
+* https://pilgwon.github.io/blog/2017/10/14/RxSwift-By-Examples-4-Multithreading.html[예제로 시작하는 RxSwift #4 – 멀티스레딩]
+* https://www.thedroidsonroids.com/blog/ios/rxswift-examples-4-multithreading/[RxSwift by Examples #4 – Multithreading.]
