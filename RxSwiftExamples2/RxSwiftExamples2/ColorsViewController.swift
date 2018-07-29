@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class ColorsViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
@@ -49,9 +50,10 @@ extension ColorsViewController {
       self.dataSource.accept(dataSource)
     }).disposed(by: disposeBag)
     
-    dataSource.bind(to: collectionView.rx.items(cellIdentifier: "ColorCell", cellType: UICollectionViewCell.self)) { (index, color, cell) in
-      cell.contentView.backgroundColor = color
-      }.disposed(by: disposeBag)
+    dataSource
+      .map { [Section(model: "", items: $0)] }
+      .bind(to: collectionView.rx.items(dataSource: createDataSource()))
+      .disposed(by: disposeBag)
     
     collectionView.rx.itemSelected.asObservable().subscribe(onNext: { [weak self] (indexPath) in
       guard let `self` = self else { return }
@@ -59,5 +61,26 @@ extension ColorsViewController {
       dataSource.remove(at: indexPath.item)
       self.dataSource.accept(dataSource)
     }).disposed(by: disposeBag)
+  }
+  
+  typealias Section = AnimatableSectionModel<String, UIColor>
+  typealias ColorDataSource = RxCollectionViewSectionedAnimatedDataSource<Section>
+  
+  func createDataSource() -> ColorDataSource {
+    let dataSource = ColorDataSource(configureCell: { (dataSource, collectionView, indexPath, color) -> UICollectionViewCell in
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath)
+      cell.contentView.backgroundColor = color
+      return cell
+    }, configureSupplementaryView: { (dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
+      return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "", for: indexPath)
+    })
+   
+    return dataSource
+  }
+}
+
+extension UIColor: IdentifiableType {
+  public var identity: Int {
+    return self.cgColor.hashValue
   }
 }
