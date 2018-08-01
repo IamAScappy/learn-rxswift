@@ -142,13 +142,15 @@ image:../images/observable-life-cycle.png[]
 ===== Subjects
 * PublishSubject
 ** Observer, Observable 동시 구현
-*** On, Subscribe 둘 다 할 수 있음
-** 스스로 일어나는 이벤트가 아닐 때 사용함 => 이벤트를 외부에서 전달해주는 경우 사용함
-** Delegate 대신 사용하기도 함
+** On, Subscribe 둘 다 할 수 있음
+** Subscribe 뒤, Observable이 보낸 이벤트를 전달함
+** 스스로 일어나는 이벤트가 아닐 때 사용함 => 이벤트를 외부에서 전달해주는 경우 사용함. Delegate로 사용할 수 있음
+* ReplaySubject
+** Subscribe 전에 발생한 이벤트를 버퍼 사이즈 만큼 넣고, 버퍼에 있던 이벤트를 subscribe 후 전달함. 버퍼 크기를 설정한 만큼 구독 후 이벤트를 전달함
 * BehaviorSubject
 ** 초기값이 1개
-** 마지막 Event를 꺼내올 수 있음
-** Subscribe와 상관없이 데이터에 접근해서 사용해야 하는 경우 => Datasource
+** Subscribe 후, 마지막 Event를 꺼내올 수 있음
+** Subscribe와 상관없이 데이터에 접근해서 사용해야 하는 경우 => Datasource로 사용할 수 있음
 
 ===== Transforming Observables
 * https://reactivex.io/documentation/operators/map.html[Map]
