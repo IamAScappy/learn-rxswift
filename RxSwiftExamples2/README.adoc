@@ -232,7 +232,7 @@ Observable.from([1, 2, 3, 4, 5].skip(1)
 Observable.from([true, true, false, false, true].distinctUntilChanged()
 ----
 
-===== Combination
+===== Combining Observables
 * https://reactivex.io/documentation/operators/merge.html[Merge]
 
 [source, swift]
@@ -283,6 +283,62 @@ secondNumberObservable
     .map { "\($0)" }
     .bind(to: resultNumberLabel.rx.text)
     .disposed(by: disposeBag)
+----
+
+===== Connectable Observable Operators
+* Observable을 공유하지 않으면 subscribe 횟수만큼 이벤트가 발생함. 예를 들어 API Call 하는 Observable가 여러 번 Subscribe 하면 API Call이 똑같이 여러 번 일어나게 됨
+* https://reactivex.io/documentation/ko/operators/connect.html[Connect]
+* https://reactivex.io/documentation/operators/publish.html[Publish]
+
+[source, swift]
+----
+func publish() -> ConnectableObservable<E> {
+   return self.multicast { PublishSubject() }
+}
+----
+
+* https://reactivex.io/documentation/operators/replay.html[Replay]
+
+[source, swift]
+----
+// Observable이 이벤트 방출 후에 subscribe 하더라도 방출한 모든 이벤트들을 볼 수 있음
+func replay(_ bufferSize: Int) -> ConnectableObservable<E> {
+    return self.multicast { ReplaySubject.create(bufferSize: bufferSize) }
+}
+----
+
+* https://reactivex.io/documentation/operators/refcount.html[RefCount]
+* Share
+
+[source, swift]
+----
+// Share - forever
+// - observable를 공유하기 위해 사용함. 잘 사용하지 않음. 종료된 예전 값을 가져와서 사용하는 케이스가 잘 없음
+// - 채팅방에서 메세지 작업 중에서 메세지를 공유하기 위해서 share를 쓰는 것이 좋음
+// - replay 0인지 1인지 고민하면 됨
+// - TabelView가 있으면 DataSource에 Bind함. DataSource에 원 글과 댓글이 존재함. 댓글과 원글의 DataSource를 공유하기 위해 사용할 수도 있음
+
+// Share - whileConnected
+// - 생각보다 사용할 일이 없음
+func share(replay: Int = 0, scope: SubjectLifetimeScope = .whileConnected)
+        -> Observable<E> {
+        switch scope {
+        case .forever:
+            switch replay {
+            case 0: return self.multicast(PublishSubject()).refCount()
+            default: return
+                 self.multicast(ReplaySubject.create(bufferSize: replay)).refCount()
+            }
+        case .whileConnected:
+            switch replay {
+            case 0: return ShareWhileConnected(source: self.asObservable())
+            case 1: return ShareReplay1WhileConnected(source: self.asObservable())
+            default: return self.multicast(makeSubject: {
+                        ReplaySubject.create(bufferSize: replay) }).refCount()
+                    }
+            }
+        }
+}
 ----
 
 ===== Binding
