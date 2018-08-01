@@ -1,0 +1,7 @@
+target 'RxSwiftExamples3' do
+  use_frameworks!
+
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxDataSources'
+end
