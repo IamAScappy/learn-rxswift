@@ -90,7 +90,3 @@ end
 * 프로젝트에서 RxSwift가 제대로 Import 되지 않으면 ?
 ** Project Clean 
 ** Project Clean으로도 문제가 해결되지 않는다면 _Command + , > Locations > Deviced Data의 경로를 확인_ 하고 해당 경로로 들어가 캐시된 프로젝트 파일을 지우고 해당 프로젝트 다시 염
-
-===== 예제
-* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1/RxSwiftExamples1/Examples[Examples]
-* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1/RxSwiftExamples1/Projects[Projects]

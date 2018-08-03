@@ -1,11 +1,11 @@
 = RxSwift
 
 ===== 설명
-* https://github.com/yuaming/learn-rxswift/tree/master/RxMacos/README.adoc[RxSwiftExamples 1]
+* https://github.com/yuaming/learn-rxswift/tree/master/RxMacos[RxSwiftExamples 1]
 ** RxSwift
-* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples2/README.adoc[RxSwiftExamples 2]
+* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples2[RxSwiftExamples 2]
 ** RxSwift, RxCocoa를 이용한 간단한 예제
-* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples3/README.adoc[RxSwiftExamples 3]
+* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples3[RxSwiftExamples 3]
 ** TableView, CollectionView
 
 ===== 참고
