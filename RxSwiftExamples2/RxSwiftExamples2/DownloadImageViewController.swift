@@ -16,7 +16,7 @@ class DownloadImageViewController: UIViewController {
   @IBOutlet weak var goButton: UIButton!
   @IBOutlet weak var imageView: UIImageView!
   
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

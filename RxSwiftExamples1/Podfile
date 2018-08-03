@@ -1,6 +1,0 @@
-target 'RxSwiftExamples1' do
-  use_frameworks!
-
-  pod 'RxSwift'
-  pod 'RxCocoa'
-end

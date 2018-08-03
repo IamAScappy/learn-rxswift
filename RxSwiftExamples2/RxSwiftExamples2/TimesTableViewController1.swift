@@ -13,7 +13,7 @@ import RxCocoa
 class TimesTableViewController1: UIViewController {
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var label: UILabel!
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

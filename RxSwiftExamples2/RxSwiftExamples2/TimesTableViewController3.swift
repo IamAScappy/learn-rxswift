@@ -20,7 +20,7 @@ class TimesTableViewController3: UIViewController {
   
   @IBOutlet weak var startedButton: UIButton!
   
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   fileprivate var answer: Int = 0
   
   override func viewDidLoad() {

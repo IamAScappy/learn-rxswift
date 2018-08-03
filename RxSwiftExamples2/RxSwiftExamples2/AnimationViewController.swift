@@ -17,7 +17,7 @@ class AnimationViewController: UIViewController {
   @IBOutlet weak var rightButton: UIButton!
   @IBOutlet weak var box: UIView!
   
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

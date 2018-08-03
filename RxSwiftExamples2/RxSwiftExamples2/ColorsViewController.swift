@@ -17,7 +17,7 @@ class ColorsViewController: UIViewController {
   
   fileprivate let refreshControl = UIRefreshControl()
   fileprivate var dataSource: BehaviorRelay<[UIColor]> = BehaviorRelay(value: [UIColor.cyan, UIColor.magenta, UIColor.orange])
-  fileprivate var disposeBag = DisposeBag()
+  fileprivate let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

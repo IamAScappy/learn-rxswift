@@ -23,7 +23,7 @@ class ColorViewController: UIViewController {
   @IBOutlet weak var doneButton: UIBarButtonItem!
   @IBOutlet weak var cancelButton: UIBarButtonItem!
   
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

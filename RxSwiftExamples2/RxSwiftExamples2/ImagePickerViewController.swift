@@ -16,7 +16,7 @@ class ImagePickerViewController: UIViewController {
   @IBOutlet weak var uploadButton: UIButton!
   @IBOutlet weak var progressbar: UIProgressView!
   
-  fileprivate var disposeBag = DisposeBag()
+  fileprivate let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

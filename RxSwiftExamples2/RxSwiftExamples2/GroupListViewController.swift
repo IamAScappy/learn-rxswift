@@ -14,7 +14,7 @@ import RxDataSources
 class GroupListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

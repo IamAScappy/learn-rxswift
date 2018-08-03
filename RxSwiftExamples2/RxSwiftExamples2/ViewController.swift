@@ -16,7 +16,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var cTextField: UITextField!
   @IBOutlet weak var resultLabel: UILabel!
   
-  var disposeBag: DisposeBag = DisposeBag()
+  let disposeBag: DisposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()

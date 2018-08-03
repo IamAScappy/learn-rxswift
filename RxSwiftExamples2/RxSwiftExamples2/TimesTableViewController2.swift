@@ -16,7 +16,7 @@ class TimesTableViewController2: UIViewController {
   @IBOutlet weak var secondNumberLabel: UILabel!
   @IBOutlet weak var resultNumberLabel: UILabel!
   
-  fileprivate var disposeBag: DisposeBag = DisposeBag()
+  fileprivate let disposeBag: DisposeBag = DisposeBag()
   // 전역변수는 Functional Programming 특징 중에서 Side Effect 일으키지 않는 특징에 대해 위배됨
   // fileprivate var firstNumber: Int = 0
   
