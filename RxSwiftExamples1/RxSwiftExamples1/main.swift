@@ -3,7 +3,7 @@
 //  RxMacos
 //
 //  Created by JK on 03/08/2018.
-//  Copyright © 2018 codesquad. All rights reserved.
+//  Copyright © 2018년 yuaming. All rights reserved.
 //
 
 import Foundation

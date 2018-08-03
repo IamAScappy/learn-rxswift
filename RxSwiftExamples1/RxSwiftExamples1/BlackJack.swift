@@ -1,9 +1,9 @@
 //
 //  BlackJack.swift
-//  RxMacos
+//  RxSwiftExmaples1
 //
 //  Created by yuaming on 2018. 8. 3..
-//  Copyright © 2018년 codesquad. All rights reserved.
+//  Copyright © 2018년 yuaming. All rights reserved.
 //
 
 import Foundation
