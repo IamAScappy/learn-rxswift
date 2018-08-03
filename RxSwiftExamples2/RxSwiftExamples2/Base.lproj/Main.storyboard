@@ -306,7 +306,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="10. Connectable Observables 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jwa-t8-xqJ">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="10. Connectable Observables" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jwa-t8-xqJ">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -318,23 +318,6 @@
                                         <connections>
                                             <segue destination="t2U-CC-p9f" kind="show" id="6hn-8p-2UU"/>
                                         </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="ssS-8q-hSH" style="IBUITableViewCellStyleDefault" id="c2Q-pF-s5b">
-                                        <rect key="frame" x="0.0" y="440" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c2Q-pF-s5b" id="Ugv-eI-dUD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="11. Connectable Observables 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ssS-8q-hSH">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -946,9 +929,53 @@
                     <view key="view" contentMode="scaleToFill" id="ZNL-GW-MvA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-g1-bqs">
+                                <rect key="frame" x="0.0" y="164" width="375" height="280"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1H-Fz-0JV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <state key="normal" title="shareReplay0ForeverDelay"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txh-n7-e2k">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                        <state key="normal" title="shareReplay1ForeverDelay"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0A-Sj-Wce">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="30"/>
+                                        <state key="normal" title="shareReplay2ForeverDelay"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvM-DK-Kor">
+                                        <rect key="frame" x="0.0" y="150" width="375" height="30"/>
+                                        <state key="normal" title="shareReplay0WhileConnectedDelay"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-jK-Kc4">
+                                        <rect key="frame" x="0.0" y="200" width="375" height="30"/>
+                                        <state key="normal" title="shareReplay1WhileConnectedDelay"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAZ-qU-0TS">
+                                        <rect key="frame" x="0.0" y="250" width="375" height="30"/>
+                                        <state key="normal" title="shareReplay2WhileConnectedDelay"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zh1-g1-bqs" firstAttribute="top" secondItem="ofG-b6-a71" secondAttribute="top" constant="100" id="8Nl-yg-9p3"/>
+                            <constraint firstItem="Zh1-g1-bqs" firstAttribute="leading" secondItem="ofG-b6-a71" secondAttribute="leading" id="VGH-GX-snC"/>
+                            <constraint firstItem="ofG-b6-a71" firstAttribute="trailing" secondItem="Zh1-g1-bqs" secondAttribute="trailing" id="gBD-bG-6IM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ofG-b6-a71"/>
                     </view>
+                    <connections>
+                        <outlet property="shareReplay0ForeverDelayButton" destination="T1H-Fz-0JV" id="Cpg-N2-08v"/>
+                        <outlet property="shareReplay0WhileConnectedDelayButton" destination="DvM-DK-Kor" id="H3V-gM-EeR"/>
+                        <outlet property="shareReplay1ForeverDelayButton" destination="Txh-n7-e2k" id="QhC-tE-stz"/>
+                        <outlet property="shareReplay1WhileConnectedDelayButton" destination="UfJ-jK-Kc4" id="7uO-p8-17y"/>
+                        <outlet property="shareReplay2ForeverDelayButton" destination="u0A-Sj-Wce" id="GrI-eF-TcY"/>
+                        <outlet property="shareReplay2WhileConnectedDelayButton" destination="MAZ-qU-0TS" id="rAV-v8-v14"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AhF-C6-HNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

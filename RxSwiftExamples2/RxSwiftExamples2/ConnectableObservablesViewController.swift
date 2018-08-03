@@ -11,7 +11,15 @@ import RxSwift
 import RxCocoa
 
 class ConnectableObservablesViewController: UIViewController {
-  let disposeBag = DisposeBag()
+  @IBOutlet weak var shareReplay0ForeverDelayButton: UIButton!
+  @IBOutlet weak var shareReplay1ForeverDelayButton: UIButton!
+  @IBOutlet weak var shareReplay2ForeverDelayButton: UIButton!
+  
+  @IBOutlet weak var shareReplay0WhileConnectedDelayButton: UIButton!
+  @IBOutlet weak var shareReplay1WhileConnectedDelayButton: UIButton!
+  @IBOutlet weak var shareReplay2WhileConnectedDelayButton: UIButton!
+  
+  var disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,23 +28,110 @@ class ConnectableObservablesViewController: UIViewController {
 }
 
 extension ConnectableObservablesViewController {
-  fileprivate func bind() {
-    let xs = Observable.deferred { () -> Observable<TimeInterval> in
-      return Observable.just(Date().timeIntervalSince1970, scheduler: MainScheduler.instance)
-    }.replay(2).refCount()
+  func bind() {
+    shareReplay0ForeverDelayButton.rx.tap.subscribe(onNext: {[weak self] _ in self?.shareReplay0ForeverDelay() }).disposed(by: disposeBag)
+    shareReplay1ForeverDelayButton.rx.tap.subscribe(onNext: {[weak self] _ in self?.shareReplay1ForeverDelay() }).disposed(by: disposeBag)
+    shareReplay2ForeverDelayButton.rx.tap.subscribe(onNext: {[weak self] _ in self?.shareReplay2ForeverDelay() }).disposed(by: disposeBag)
+    shareReplay0WhileConnectedDelayButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in self?.shareReplay0WhileConnectedDelay() }).disposed(by: disposeBag)
+    shareReplay1WhileConnectedDelayButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in self?.shareReplay1WhileConnectedDelay() }).disposed(by: disposeBag)
+    shareReplay2WhileConnectedDelayButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in self?.shareReplay2WhileConnectedDelay() }).disposed(by: disposeBag)
+  }
+  
+  func shareReplay0ForeverDelay() {
+    print("==========================================\n")
     
-    _ = xs.subscribe(onNext: { print( "\($0)") }, onCompleted: { print("Completed") }).disposed(by: disposeBag)
-    _ = xs.subscribe(onNext: { print( "\($0)") }, onCompleted: { print("Completed") }).disposed(by: disposeBag)
-    _ = xs.subscribe(onNext: { print( "\($0)") }, onCompleted: { print("Completed") }).disposed(by: disposeBag)
+    let observable : Observable<TimeInterval> = Observable<Int>.interval(0.1, scheduler: MainScheduler.instance)
+      .take(4)
+      .map { _ -> TimeInterval in return  Date().timeIntervalSince1970 }
+      .share(replay: 0, scope: .forever)
     
-    print("------------------------------------------\n\n\n")
+    Observable<Int>.interval(0.11, scheduler: MainScheduler.instance).take(4).subscribe(onNext: { [weak self] count in
+      guard let `self` = self else { return }
+      print("subscribe: \(count)")
+      observable.subscribe(onNext: { print("\(count) next \($0)")}).disposed(by: self.disposeBag)
+    }).disposed(by: disposeBag)
+  }
+  
+  func shareReplay1ForeverDelay() {
+    print("==========================================\n")
+    let observable : Observable<TimeInterval> = Observable<Int>.interval(0.1, scheduler: MainScheduler.instance)
+      .take(4)
+      
+      .map { _ -> TimeInterval in return  Date().timeIntervalSince1970 }
+      .share(replay: 1, scope: .forever)
+    
+    
+    Observable<Int>.interval(0.11, scheduler: MainScheduler.instance).take(4).subscribe(onNext: { [weak self] count in
+      guard let `self` = self else { return }
+      print("subscribe: \(count)")
+      observable.subscribe(onNext: { print("\(count) next \($0)")}).disposed(by: self.disposeBag)
+    }).disposed(by: disposeBag)
+  }
+  
+  func shareReplay2ForeverDelay() {
+    print("==========================================\n")
+    let observable : Observable<TimeInterval> = Observable<Int>.interval(0.1, scheduler: MainScheduler.instance)
+      .take(4)
+      
+      .map { _ -> TimeInterval in return  Date().timeIntervalSince1970 }
+      .share(replay: 2, scope: .forever)
+    //            .debug()
+    
+    Observable<Int>.interval(0.15, scheduler: MainScheduler.instance).take(4).subscribe(onNext: { [weak self] count in
+      guard let `self` = self else { return }
+      print("subscribe: \(count)")
+      observable.subscribe(onNext: { print("\(count) next \($0)")}).disposed(by: self.disposeBag)
+    }).disposed(by: disposeBag)
+  }
+  
+  func shareReplay0WhileConnectedDelay() {
+    print("==========================================\n")
+    let observable : Observable<TimeInterval> = Observable<Int>.interval(0.1, scheduler: MainScheduler.instance)
+      .take(4)
+      .map { _ -> TimeInterval in
+        print("Event Emit!!!!")
+        return Date().timeIntervalSince1970 }
+      .share(replay: 0, scope: .whileConnected)
+    
+    
+    Observable<Int>.interval(0.15, scheduler: MainScheduler.instance).take(4).subscribe(onNext: { [weak self] count in
+      guard let `self` = self else { return }
+      print("subscribe: \(count)")
+      observable.subscribe(onNext: { print("\(count) next \($0)")}).disposed(by: self.disposeBag)
+    }).disposed(by: disposeBag)
+  }
+  
+  func shareReplay1WhileConnectedDelay() {
+    print("==========================================\n")
+    let observable : Observable<TimeInterval> = Observable<Int>.interval(0.1, scheduler: MainScheduler.instance)
+      .take(4)
+      
+      .map { _ -> TimeInterval in return  Date().timeIntervalSince1970 }
+      .share(replay: 1, scope: .whileConnected)
 
-    let xs1 = Observable.deferred { () -> Observable<TimeInterval> in
-        return Observable.just(Date().timeIntervalSince1970).delay(0.1, scheduler: MainScheduler.instance)
-      }
     
-    _ = xs1.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") }).disposed(by: disposeBag)
-    _ = xs1.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") }).disposed(by: disposeBag)
-    _ = xs1.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") }).disposed(by: disposeBag)
+    Observable<Int>.interval(0.15, scheduler: MainScheduler.instance).take(4).subscribe(onNext: { [weak self] count in
+      guard let `self` = self else { return }
+      print("subscribe: \(count)")
+      observable.subscribe(onNext: { print("\(count) next \($0)")}).disposed(by: self.disposeBag)
+    }).disposed(by: disposeBag)
+  }
+  
+  func shareReplay2WhileConnectedDelay() {
+    print("==========================================\n")
+    let observable : Observable<TimeInterval> = Observable<Int>.interval(0.1, scheduler: MainScheduler.instance)
+      .take(4)
+      
+      .map { _ -> TimeInterval in return  Date().timeIntervalSince1970 }
+      .share(replay: 2, scope: .whileConnected)
+    
+    Observable<Int>.interval(0.15, scheduler: MainScheduler.instance).take(4).subscribe(onNext: { [weak self] count in
+      guard let `self` = self else { return }
+      print("subscribe: \(count)")
+      observable.subscribe(onNext: { print("\(count) next \($0)")}).disposed(by: self.disposeBag)
+    }).disposed(by: disposeBag)
   }
 }
