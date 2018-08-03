@@ -7,8 +7,19 @@
 //
 
 import Foundation
+import RxDataSources
 
 struct NameModel {
   let name: String
   let number: Int
+}
+
+extension NameModel: Equatable, IdentifiableType {
+  static func == (lhs: NameModel, rhs: NameModel) -> Bool {
+    return lhs.name == rhs.name
+  }
+  
+  var identity: Int {
+    return number
+  }
 }

@@ -12,6 +12,7 @@
 		8742A4FC2114A9FA00F1F28D /* NameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8742A4FB2114A9FA00F1F28D /* NameModel.swift */; };
 		8742A4FE2114AE8700F1F28D /* BindingTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8742A4FD2114AE8700F1F28D /* BindingTableViewController2.swift */; };
 		8742A5002114B31100F1F28D /* BindingTableViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8742A4FF2114B31100F1F28D /* BindingTableViewController3.swift */; };
+		8742A5022114BBDF00F1F28D /* BindingTableViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8742A5012114BBDF00F1F28D /* BindingTableViewController5.swift */; };
 		8794001A2111454F0043BFC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879400192111454F0043BFC6 /* AppDelegate.swift */; };
 		8794001F2111454F0043BFC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8794001D2111454F0043BFC6 /* Main.storyboard */; };
 		87940021211145500043BFC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87940020211145500043BFC6 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		8742A4FB2114A9FA00F1F28D /* NameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameModel.swift; sourceTree = "<group>"; };
 		8742A4FD2114AE8700F1F28D /* BindingTableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTableViewController2.swift; sourceTree = "<group>"; };
 		8742A4FF2114B31100F1F28D /* BindingTableViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTableViewController3.swift; sourceTree = "<group>"; };
+		8742A5012114BBDF00F1F28D /* BindingTableViewController5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTableViewController5.swift; sourceTree = "<group>"; };
 		879400162111454F0043BFC6 /* RxSwiftExamples3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftExamples3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879400192111454F0043BFC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8794001E2111454F0043BFC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				8742A4FB2114A9FA00F1F28D /* NameModel.swift */,
 				8742A4FD2114AE8700F1F28D /* BindingTableViewController2.swift */,
 				8742A4FF2114B31100F1F28D /* BindingTableViewController3.swift */,
+				8742A5012114BBDF00F1F28D /* BindingTableViewController5.swift */,
 			);
 			path = RxSwiftExamples3;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				8742A4FC2114A9FA00F1F28D /* NameModel.swift in Sources */,
 				8742A4FA2114A9EC00F1F28D /* NameCell.swift in Sources */,
+				8742A5022114BBDF00F1F28D /* BindingTableViewController5.swift in Sources */,
 				8742A4F82114A66D00F1F28D /* BindingTableViewController1.swift in Sources */,
 				8742A4FE2114AE8700F1F28D /* BindingTableViewController2.swift in Sources */,
 				8794001A2111454F0043BFC6 /* AppDelegate.swift in Sources */,
