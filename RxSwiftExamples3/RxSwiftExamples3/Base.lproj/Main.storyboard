@@ -79,7 +79,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ubc-5b-dXt" kind="show" id="Txx-Ak-udR"/>
+                                            <segue destination="ubc-5b-dXt" kind="show" id="Wou-Th-nUk"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oSA-pW-LA4">
@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="3111" y="1532"/>
         </scene>
-        <!--Binding Table View Controller3-->
+        <!--Title-->
         <scene sceneID="CNc-I4-RVx">
             <objects>
-                <viewController id="ubc-5b-dXt" customClass="BindingTableViewController3" sceneMemberID="viewController">
+                <viewController id="ubc-5b-dXt" customClass="BindingTableViewController3" customModule="RxSwiftExamples3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JY5-1p-KYR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,8 +356,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vdo-Kx-nZn"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="7UI-Cn-QRP">
+                        <barButtonItem key="rightBarButtonItem" title="Mix" id="Adw-2e-Sxu" userLabel="Mix"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="JU0-As-Buf" id="UvS-nR-VJW"/>
+                        <outlet property="mixedButton" destination="Adw-2e-Sxu" id="bR3-LA-Mje"/>
+                        <outlet property="tableView" destination="JU0-As-Buf" id="oks-aJ-U30"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DX-kZ-czE" userLabel="First Responder" sceneMemberID="firstResponder"/>
