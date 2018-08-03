@@ -11,7 +11,7 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-class BindingTableView2Controller: UIViewController {
+class BindingTableViewController2: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   private let dataSource = BehaviorRelay<[NameModel]>(value: [
@@ -30,7 +30,7 @@ class BindingTableView2Controller: UIViewController {
   }
 }
 
-extension BindingTableView2Controller {
+extension BindingTableViewController2 {
   private func bind() {
     dataSource
       .bind(to: tableView.rx.items(cellIdentifier: "NameCell", cellType: NameCell.self)) { (index, model, cell) in

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class BindingTableView1Controller: UIViewController {
+class BindingTableViewController1: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   private let dataSource = [
@@ -29,7 +29,7 @@ class BindingTableView1Controller: UIViewController {
   }
 }
 
-extension BindingTableView1Controller {
+extension BindingTableViewController1 {
   private func bind() {
     Observable<[NameModel]>.just(dataSource)
       .bind(to: tableView.rx.items) { (tableView, index, model) -> UITableViewCell in
