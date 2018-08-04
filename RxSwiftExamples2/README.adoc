@@ -187,6 +187,15 @@ button.rx.tap.asObservable()
 [source, swift]
 ----
 // window, buffer와 아주 밀접함. 거의 같지만 다른 점은 Observable 방출한다는 차이점이 존재함
+// 이벤트 합치기 용도
+// 앞부분에서 subscibe, 뒷부분에서 completed. 그래서 시작과 끝부분을 이용할 수 있음
+// window 단위로 끊어짐. window를 작은 Observable를 생각하면 됨
+
+// Scan
+// - 이전 이벤트와 현재 들어온 이벤트를 가지고 현재 발행할 새 이벤트를 만듦
+// - answer ⇒ 이전 값
+// - element ⇒ 현재 값
+// - window로 비밀번호 자리수로 확인할 수 있음. scan + window 조합
 let numberObservable = Observable.merge(numberObservables)
     
 let inputtedNumberObservable = numberObservable.window(timeSpan: 3600 * 24, count: 2, scheduler: MainScheduler.instance)
@@ -340,6 +349,14 @@ secondNumberObservable
     .map { "\($0)" }
     .bind(to: resultNumberLabel.rx.text)
     .disposed(by: disposeBag)
+----
+
+* https://reactivex.io/documentation/operators/switch.html[Switch]
+
+[source, swift]
+----
+// 여러 옵저버블을 하나의 옵저버블로 만듦. 내부 옵저버블을 새 옵저버블로 갈아치움
+// subscribe 한 상태에서 아이디가 바뀐다면?
 ----
 
 ===== Connectable Observable Operators
