@@ -295,9 +295,34 @@ secondNumberObservable
 func publish() -> ConnectableObservable<E> {
    return self.multicast { PublishSubject() }
 }
+
+
+let observable = Observable<Int>
+    .interval(0.3, scheduler: MainScheduler.instance).take(2).skip(1)
+    .map { (element: Int) -> Int in
+        print("map: \(element)")
+        return element
+    }
+
+// publish: 일반 Observable를 공유 가능한 Observable로 변환함
+let publishObservable = observable.publish()
+
+publishObservable
+    .subscribe(onNext: { element in
+        print("publishObservable subscribe 1 : \(element)")
+    }).disposed(by: disposeBag)
+
+publishObservable
+    .subscribe(onNext: { element in
+        print("publishObservable subscribe 2 : \(element)")
+    }).disposed(by: disposeBag)
+
+// connect: subscriber가 항목을 배출할 수 있도록 공유되어 있는 Observable에게 명령을 내림
+publishObservable.connect().disposed(by: disposeBag)
 ----
 
 * https://reactivex.io/documentation/operators/replay.html[Replay]
+* https://reactivex.io/documentation/operators/refcount.html[RefCount]
 
 [source, swift]
 ----
@@ -305,9 +330,53 @@ func publish() -> ConnectableObservable<E> {
 func replay(_ bufferSize: Int) -> ConnectableObservable<E> {
     return self.multicast { ReplaySubject.create(bufferSize: bufferSize) }
 }
+
+// Connect를 사용하지 않아도 일반 Observable가 연결 가능한 Observable처럼 동작함
+let observable = Observable<Int>
+    .interval(0.3, scheduler: MainScheduler.instance).take(3).skip(1)
+    .map { (element: Int) -> Int in
+        print("map: \(element)")
+        return element
+    }
+
+let refCountedPublishObservable = observable.publish().refCount()
+
+refCountedPublishObservable
+    .subscribe(onNext: { element in
+        print("refCountedPublishObservable subscribe 1 : \(element)")
+    }).disposed(by: disposeBag)
+
+refCountedPublishObservable
+    .subscribe(onNext: { element in
+        print("refCountedPublishObservable subscribe 2 : \(element)")
+    }).disposed(by: disposeBag)
+
+
+// xs.subscribe 를 3번 만들면 새로운 Subscriber를 만듬. 결론은 3개의 새로운 Subscriber가 생김. 3개에 대한 이벤트 생성 시간이 각각 다름
+let xs = Observable.deferred { () -> Observable<TimeInterval> in
+        print("Performing work ...")
+        return Observable.just(Date().timeIntervalSince1970)
+    }.replay(1)
+
+_ = xs.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") })
+_ = xs.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") })
+_ = xs.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") })
+xs.connect().disposed(by: disposeBag)
+
+
+let xs = Observable.deferred { () -> Observable<TimeInterval> in
+    print("Performing work ...")
+        return Observable.just(Date().timeIntervalSince1970)
+    }
+    // replay(1)를 통해 이벤트를 공유하고 있다가 1개를 반환함
+    // refCount를 레퍼런스 카운팅라고 생각하면 됨. subscribe 하면 refCount() 1이 되었다가 0이 됨
+    .replay(1).refCount()
+
+_ = xs.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") })
+_ = xs.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") })
+_ = xs.subscribe(onNext: { print("next \($0)") }, onCompleted: { print("completed\n") })
 ----
 
-* https://reactivex.io/documentation/operators/refcount.html[RefCount]
 * Share
 
 [source, swift]
