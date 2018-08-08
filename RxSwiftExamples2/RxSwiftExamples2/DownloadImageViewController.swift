@@ -77,7 +77,7 @@ extension DownloadImageViewController {
     // observerOn: 이전 스레드에서 다음 나올 Observer에서 스레드를 지정함
     // subscribeOn: 이전 지정한 쓰레드로 돌아감
       
-    // MainSchedular 로 돌아오지 않으면 정상적인 플로우 아님
+    // Mainscheduler 로 돌아오지 않으면 정상적인 플로우 아님
     // .observeOn(MainScheduler.instance)
     // subscribeOn: 현재 프로젝트에서 tap에서 이벤트가 발생하기 때문에 사용할 수 없음
     .bind(to: imageView.rx.image)

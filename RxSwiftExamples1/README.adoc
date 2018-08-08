@@ -117,9 +117,10 @@ UIDevice.rx.orientation
     }).dispose()
 ----
 
-===== Schedular
+===== Scheduler
+* RxSwift에서 미리 정의된 스케줄러가 있기 때문에 개발자가 스케줄러를 만질 일이 거의 없음
 
-image:../images/schedular.png[]
+image:../images/scheduler-1.png[]
 
 ===== RxCocoa
 * UIKit과 Cocoa를 돕는 RxSwift 라이브러리. UIkit과 Cocoa를 지원하는 모든 클래스를 가지고 있음
