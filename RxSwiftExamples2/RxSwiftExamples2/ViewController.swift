@@ -54,7 +54,7 @@ extension ViewController {
 
 extension ViewController  {
   func bind() {
-    let subcriber: (Event<Int>) -> Void = { event in
+    let subscriber: (Event<Int>) -> Void = { event in
       switch event {
       case let .next(element):
         print("\(element)")
@@ -65,22 +65,22 @@ extension ViewController  {
       }
     }
     
-    Observable<Int>.just(1).subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.just(1).subscribe(subscriber).disposed(by: disposeBag)
     
-    Observable<Int>.from([1,2,3,4,5]).subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.from([1,2,3,4,5]).subscribe(subscriber).disposed(by: disposeBag)
     
-    Observable<Int>.of(1,2,3,4,5).subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.of(1,2,3,4,5).subscribe(subscriber).disposed(by: disposeBag)
     
     // Completed 이벤트만 발생함
-    Observable<Int>.empty().subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.empty().subscribe(subscriber).disposed(by: disposeBag)
     
     print("---")
     
     // 이벤트가 발생하지 않음
-    Observable<Int>.never().subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.never().subscribe(subscriber).disposed(by: disposeBag)
     
     // RxError, RxCocoaError를 사용할 수 있음
-    Observable<Int>.error(RxError.timeout).subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.error(RxError.timeout).subscribe(subscriber).disposed(by: disposeBag)
     
     Observable<Int>.create { observer -> Disposable in
       observer.onNext(1)
@@ -96,14 +96,14 @@ extension ViewController  {
         // error, complete,
         print("Dispose :)")
       }
-    }.subscribe(subcriber).disposed(by: disposeBag)
+    }.subscribe(subscriber).disposed(by: disposeBag)
   
     // take의 카운트가 해제되는 시점은 Completed 이벤트 발생할 때임
-    Observable<Int>.repeatElement(1000).take(10).subscribe(subcriber).disposed(by: disposeBag)
+    Observable<Int>.repeatElement(1000).take(10).subscribe(subscriber).disposed(by: disposeBag)
     
     // interval의 내부 구현이 궁금하면 RxSwift => Timer.swift 파일 열어봄
     // TimerSink 라는 클래스의 Run() 함수에서 run이 1회 돌때마다 state+ 1 을 리턴하는 코드를 확인할 수 있음
-    // Observable<Int>.interval(0.5, scheduler: MainScheduler.instance).take(20).subscribe(subcriber).disposed(by: disposeBag)
+    // Observable<Int>.interval(0.5, scheduler: MainScheduler.instance).take(20).subscribe(subscriber).disposed(by: disposeBag)
     
     // Observable 자체는 새로운 이벤트를 추가하지 못함. 그래서 Subject 설명
     // let o1 = Observable<Int>.just(10)
@@ -113,7 +113,7 @@ extension ViewController  {
     let publishSubject: PublishSubject<Int> = PublishSubject()
     publishSubject.onNext(1)
     publishSubject.onNext(3)
-    publishSubject.subscribe(subcriber).disposed(by: disposeBag)
+    publishSubject.subscribe(subscriber).disposed(by: disposeBag)
     publishSubject.onNext(20)
     publishSubject.onNext(22)
     
@@ -123,8 +123,8 @@ extension ViewController  {
     // TableView에서 Cell 선택하는 시점에서 이벤트를 가져올 때 사용할 수 있음
     let behaviorSubject: BehaviorSubject<Int> = BehaviorSubject(value: 200)
     behaviorSubject.onNext(100)
-    behaviorSubject.subscribe(subcriber).disposed(by: disposeBag)
-    behaviorSubject.subscribe(subcriber).disposed(by: disposeBag)
+    behaviorSubject.subscribe(subscriber).disposed(by: disposeBag)
+    behaviorSubject.subscribe(subscriber).disposed(by: disposeBag)
     behaviorSubject.onNext(300)
     behaviorSubject.onNext(400)
     

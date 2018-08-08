@@ -123,7 +123,6 @@ image:../images/observable-life-cycle.png[]
 * Emit => Observable가 이벤트 방출
 * Dispose => Observable의 Event 발행이 Complete되면 Dispose함
 
-
 ===== Dispose
 * dispose() => 즉시 처분
 * DisposeBag => Disposable 들을 모아두다가 한번에 처분함
@@ -140,6 +139,9 @@ image:../images/observable-life-cycle.png[]
 * interval 
 
 ===== Subjects
+* Subject를 사용하는 이유
+** 수동적으로 새로운 값을 Observable에게 넣어주고 그 값을 Subscribers에게 값을 Emit해줘야 할 때가 있음. 결론은 Observable과 Observer처럼 둘 다 사용할 수 있도록 함
+** Subject는 Subscribe하는 Subscriber들에게만 이벤트를 발생시켜줌. 구독한 후, 구독자들에게만 값을 전달해줌
 * PublishSubject
 ** Observer, Observable 동시 구현
 ** On, Subscribe 둘 다 할 수 있음
@@ -241,19 +243,19 @@ button.rx.tap.flatMap {
 *** 다른 형태로 바꾸는 것이기 때문에 Side Effect가 발생하면 안됨
 ** Side Effect가 있어도 괜찮은 곳
 *** do
-*** subcribe => subscribe이기 때문에 self 접근이 가능함
+*** Subscribe => Subscribe하기 때문에 self 접근이 가능함
 
 [source, swift]
 ----
-// 클로저 처리와 인자로 처리하는 차이
+// * 클로저 처리와 인자로 처리하는 차이
 
-// Side Effect가 발생할 수 있음
-sendButton.rx.tap.flatmap { [weak self] in
+// - Side Effect가 발생할 수 있음
+sendButton.rx.tap.flatMap { [weak self] in
     // 클로저 외부를 직접 전급
     send(message: self?.textField.text)
 }
 
-// withLatestFrom: Side Effect 해소
+// - withLatestFrom: Side Effect 해소
 sendButton.rx.tap
     // 인자로 넣음
     .withLatestFrom(textField.rx.text)
@@ -356,11 +358,11 @@ secondNumberObservable
 [source, swift]
 ----
 // 여러 옵저버블을 하나의 옵저버블로 만듦. 내부 옵저버블을 새 옵저버블로 갈아치움
-// subscribe 한 상태에서 아이디가 바뀐다면?
+// Subscribe 한 상태에서 아이디가 바뀐다면?
 ----
 
 ===== Connectable Observable Operators
-* Observable을 공유하지 않으면 subscribe 횟수만큼 이벤트가 발생함. 예를 들어 API Call 하는 Observable가 여러 번 Subscribe 하면 API Call이 똑같이 여러 번 일어나게 됨
+* Observable을 공유하지 않으면 Subscribe 횟수만큼 이벤트가 발생할 수 있음. 그래서 Observable 공유가 필요할 때 있음
 * https://reactivex.io/documentation/ko/operators/connect.html[Connect]
 * https://reactivex.io/documentation/operators/publish.html[Publish]
 
@@ -548,7 +550,7 @@ goButton.rx.tap.asObservable().flatMap { [weak self] _ -> Observable<Void> in
 * `[ReactiveX][RxSwift]observeOn, subscribeOn – 작업 스레드 지정하기 링크 참고`
 * `예제로 시작하는 RxSwift #4 – 멀티스레딩 링크 참고`
 
-===== scheduler
+===== Scheduler
 * https://reactivex.io/documentation/scheduler.html[scheduler]
 ** Operator Chaining에서 멀티 스레드를 적용하고 싶다면 스케줄을 지정하면 됨
 * 종류
@@ -567,10 +569,10 @@ goButton.rx.tap.asObservable().flatMap { [weak self] _ -> Observable<Void> in
 // orEmpty
 // - Optional인 경우 이벤트가 발생하지 않음
 textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
-  guard let intValue = Int(text) else { return Observable.empty() }
+    guard let intValue = Int(text) else { return Observable.empty() }
     
-  return Observable.just(intValue)
-}.
+    return Observable.just(intValue)
+}
 // ...
 ----
 
