@@ -48,7 +48,7 @@ func loadText(from filename: String) -> Single<String> {
  - 컴파일러가 타입을 추론하여 Observable Sequence를 만듦
  
  3. from
- - Obserable<String>. Array 요소를 하나씩 배출함. Array 인자만 가짐
+ - Observable<String>. Array 요소를 하나씩 배출함. Array 인자만 가짐
  */
 example(of: "Create observable") {
   _ = Observable<String>.just(woong)
