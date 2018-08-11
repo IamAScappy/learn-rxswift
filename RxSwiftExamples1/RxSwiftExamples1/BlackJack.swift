@@ -19,7 +19,7 @@ class BlackJack {
   ]
   
   func play() {
-    example(of: "BlackJack") {
+    Utils.example(of: "BlackJack") {
       let disposeBag = DisposeBag()
       
       let dealtHand = PublishSubject<[(String, Int)]>()
