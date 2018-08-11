@@ -16,6 +16,7 @@
 * http://reactivex.io[ReactiveX]
 * https://videos.raywenderlich.com/courses/116-beginning-rxswift/lessons/1[Beginning RxSwift]
 * https://store.raywenderlich.com/products/rxswift[RxSwift eBook]
+* https://github.com/fimuxd/RxSwift[RxSwift 한국어 번역]
 * https://www.slideshare.net/devxoul/rxswift-81314827[RxSwift 시작하기: 전수열님 발표 자료]
 * https://www.slideshare.net/ChiwonSong/20171104-frp-81598173[Functional Reactive Programming Paradigm: 송치원님 발표 자료]
 * https://www.youtube.com/watch?v=cXi_CmZuBgg&feature=youtu.be[Functional Reactive Programming Paradigm: 송치원님 발표 영상]
