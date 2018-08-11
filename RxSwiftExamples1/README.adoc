@@ -47,11 +47,11 @@ image:../images/ios-async.png[]
 
 ===== RxSwift 장, 단점
 * 장점
-** 선언형(Declarative)
-** 함수형(Functional)
+** Declarative
+** Functional
 *** Side Effect가 무조건 나쁜 것이 아님. 다만, Side Effect가 언제 발생하는지 어떻게 동작하는지 Ouptut Data까지 결정할 수 있어야 함
 ** 일관성 있는 패턴, 연산자
-** 가변상태(Mutable State)를 다룰 수 있음
+** Mutable State를 다룰 수 있음
 *** 여기서 말하는 State. 한마디로 정의하기 힘들지만, 노트북을 처음 사용할 때 빠르게 동작하지만, 몇 주 지나면 이상한 동작을 할 때 있음. 하드웨어와 소프트웨어는 같은 상태를 유지하지만 단지 바뀐 것은 State 뿐. 그래서 노트북을 재시작하면 정상으로 돌아옴. 모든 Cloud 서비스에서 오는 사용자의 Input을 추척하는 모든 것들이 컴퓨터 상태를 나타냄. 앱의 상태를 관리할 때 특히 다수 비동기 Components 사이의 상태를 관리하는 것이 RxSwift 통해 배울 수 있음
 ** 복잡도가 없음
 ** 여러 플랫폼
@@ -90,14 +90,30 @@ end
 
 ===== Observables
 * Asynchronour Stream
-* Finite Observable Sequences
-* Infinite Observable Sequences
+** Finite Observable Sequences
+** Infinite Observable Sequences
 * 이벤트를 주기적인 시간을 넘어 발생함
 * 왼쪽으로 오른쪽으로 가는 화살표는 현재 시간의 흐름
 * Observable 생명주기 동안 Any Point가 발생함
 
 image:../images/rxswift-observables.png[45%, 45%]
 image:../images/observables2.png[45%, 45%]
+
+* Observer
+** 관찰하는 주체
+** Reaction - Action: Reaction 하기 위해 Action을 감시함
+
+* Observable
+** 관찰되는 대상
+** 요소가 가지고 있는 이벤트를 계속 방출함
+** Subscribers가 방출한 이벤트들에 대해 반응할 수 있음
+
+* Observable Life Cycle 
+** Next => Interger 또는 Tap
+** Error => Observable 종료됨
+** Completed => Observable 종료됨
+* Observable Events
+** 열거형으로 구성됨
 
 ===== Operators
 * Observable을 사용할 때 미리 정의된 Operator를 사용해 비동기 처리를 할 수 있음

@@ -47,6 +47,16 @@ extension TimesTableViewController3 {
     
     let numberObservable = Observable.merge(numberObservables)
     
+    // Window, Buffer와 아주 밀접함. 거의 같지만 다른 점은 Observable 방출한다는 차이점이 존재함
+    // - 이벤트 합치기 용도
+    // - 앞부분에서 Subscribe, 뒷부분에서 Completed. 그래서 시작과 끝부분을 이용할 수 있음
+    // Window 단위로 끊어짐. Window를 작은 Observable를 생각하면 됨
+    
+    // Scan
+    // - 이전 이벤트와 현재 들어온 이벤트를 가지고 현재 발행할 새 이벤트를 만듦
+    // - Answer ⇒ 이전 값
+    // - Element ⇒ 현재 값
+    // - Window로 비밀번호 자리수로 확인할 수 있음. Scan + Window 조합
     let inputtedNumberObservable = numberObservable.window(timeSpan: 3600 * 24, count: 2, scheduler: MainScheduler.instance).flatMap { window -> Observable<Int> in
       return window.scan(0, accumulator: { (anwser, event) -> Int in
         return (anwser * 10) + event

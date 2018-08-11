@@ -23,7 +23,7 @@ class TimesTableViewController1: UIViewController {
 
 extension TimesTableViewController1 {
   fileprivate func bind() {
-    // ControlProperty: orEmpty 프로퍼티가 존재함. Optional 중에서 nil인 경우 이벤트가 발생하지 않음
+    // ControlProperty 가지고 있는 프로퍼티 중에서 orEmpty가 있음. Optional 중에서 nil인 경우 이벤트가 발생하지 않음
     // map을 사용하면 Observable이 아니라 nil를 리턴함. flatMap을 사용하면 Observable를 리턴해야 함
     textField.rx.text.orEmpty.flatMap { text -> Observable<Int> in
       guard let intValue = Int(text) else { return Observable.empty() }

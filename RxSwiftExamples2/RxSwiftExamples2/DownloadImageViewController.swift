@@ -29,8 +29,6 @@ extension DownloadImageViewController {
     goButton.rx.tap.asObservable().flatMap { [weak self] _ -> Observable<Void> in
       return self?.rx.showAlert(title: "다운로드", message: "다운로드 하시겠습니까?") ?? Observable.empty()
     }
-    // SerialDispatchQueueScheduler: Main에서 Background로 넘어감
-    // .observeOn(SerialDispatchQueueScheduler(qos: .background))
     .withLatestFrom(urlTextField.rx.text.orEmpty)
     // map에서 error 이벤트가 일어나며 안됨. Side Effect가 발생함
     // .map { text -> URL in
@@ -66,20 +64,10 @@ extension DownloadImageViewController {
   
       return image
     }
-    // ConcurrentMainScheduler
-    // ConcurrentDispatchQueueScheduler
-    // AtomicIncreasement. Atomic 하지 않음
-      
-    // SerialDispatchQueueScheduler
-    // MainScheduler
-    // Atomic 함
-      
-    // observerOn: 이전 스레드에서 다음 나올 Observer에서 스레드를 지정함
-    // subscribeOn: 이전 지정한 쓰레드로 돌아감
-      
-    // Mainscheduler 로 돌아오지 않으면 정상적인 플로우 아님
+    // MainScheduler로 돌아오지 않으면 정상적인 플로우 아님
     // .observeOn(MainScheduler.instance)
-    // subscribeOn: 현재 프로젝트에서 tap에서 이벤트가 발생하기 때문에 사용할 수 없음
+    // subscribeOn
+    // - 현재 프로젝트에서 tap에서 이벤트가 발생하기 때문에 사용할 수 없음
     .bind(to: imageView.rx.image)
     .disposed(by: disposeBag)
   }

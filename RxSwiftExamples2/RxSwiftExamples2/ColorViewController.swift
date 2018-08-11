@@ -77,7 +77,7 @@ extension ColorViewController {
         return Observable.just(rgb)
       }.subscribe(onNext: { [weak self] (red, green, blue) in
         guard let `self` = self else { return }
-        // ControlProperty: subscribe나 값을 넣을 수 있음
+        // ControlProperty -> subscribe나 값을 넣을 수 있음
         self.rSlider.rx.value.onNext(Float(red) / 255.0)
         self.rSlider.sendActions(for: .valueChanged)
         

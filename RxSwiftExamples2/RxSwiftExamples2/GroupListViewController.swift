@@ -36,7 +36,7 @@ extension GroupListViewController {
   }
   
   fileprivate func bind() {
-    // zip이 아니여도 combineLatest로도 상관없지만, 지금 상황에서 API 호출이 1번 이기 때문에 combineLatest가 적절하지 않음
+    // zip이 아니여도 combineLatest로도 상관없지만, 지금 상황에서 API 호출이 1번 일어나기 때문에 combineLatest가 적절하지 않음
     let items: Observable<[GroupSection]> = Observable.zip(GroupListAPI.groupList(), GroupListAPI.categoryList()) { (groups: [Group], categories: [Category]) -> [GroupSection] in
       return categories.map { category -> GroupSection in
         let categoryGroups = groups.filter { $0.categoryID == category.ID }
@@ -78,7 +78,8 @@ struct GroupListAPI {
        Group(name: "열두번째 그룹", categoryID: 4, ID: 12),
        Group(name: "열세번째 그룹", categoryID: 4, ID: 13)]
     
-    // delay: 이벤트가 2개 일어난다면 0.5초 후에 일어남
+    // delay
+    // - 이벤트가 2개 일어난다면 0.5초 후에 일어남
     return Observable.just(groupList).delay(0.5, scheduler: MainScheduler.instance)
   }
   

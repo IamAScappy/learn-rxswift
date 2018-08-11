@@ -90,7 +90,7 @@ extension AnimationViewController {
 }
 
 // Binder
-// - Boxing: view.rx.animation
+// - Boxing => view.rx.animation
 // - Binder 안에서 코드가 길어지는 것을 경계해야 함
 extension Reactive where Base: UIView {
   var animation: Binder<Animation> {
