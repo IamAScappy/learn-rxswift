@@ -10,8 +10,8 @@ import Foundation
 
 // ObservableExamples().execute()
 // SubjectExamples().execute()
+// FilteringOperatorExamples().execute()
 
-FilteringOperatorExamples().execute()
-
+TransformingOperatorExamples().execute()
 
 // BlackJack().play()
