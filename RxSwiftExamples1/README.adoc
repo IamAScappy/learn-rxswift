@@ -88,32 +88,47 @@ end
 ** Project Clean 
 ** Project Clean으로도 문제가 해결되지 않는다면 _Command + , > Locations > Deviced Data의 경로를 확인_ 하고 해당 경로로 들어가 캐시된 프로젝트 파일을 지우고 해당 프로젝트 다시 염
 
+===== Observer
+* 관찰하는 주체
+* Reaction - Action: Reaction 하기 위해 Action을 감시함
+
 ===== Observables
+* 관찰되는 대상
 * Asynchronour Stream
 ** Finite Observable Sequences
 ** Infinite Observable Sequences
 * 이벤트를 주기적인 시간을 넘어 발생함
 * 왼쪽으로 오른쪽으로 가는 화살표는 현재 시간의 흐름
 * Observable 생명주기 동안 Any Point가 발생함
+* Subscribers가 방출한 이벤트들에 대해 반응할 수 있음
 
 image:../images/rxswift-observables.png[45%, 45%]
 image:../images/observables2.png[45%, 45%]
 
-* Observer
-** 관찰하는 주체
-** Reaction - Action: Reaction 하기 위해 Action을 감시함
-
-* Observable
-** 관찰되는 대상
-** 요소가 가지고 있는 이벤트를 계속 방출함
-** Subscribers가 방출한 이벤트들에 대해 반응할 수 있음
-
-* Observable Life Cycle 
+* Life Cycle 
 ** Next => Interger 또는 Tap
 ** Error => Observable 종료됨
 ** Completed => Observable 종료됨
-* Observable Events
+
+* Events
 ** 열거형으로 구성됨
+
+[source, swift]
+----
+enum Event<Element>  {
+    case next(Element)      // next element of a sequence
+    case error(Swift.Error) // sequence failed with error
+    case completed          // sequence terminated successfully
+}
+
+class Observable<Element> {
+    func subscribe(_ observer: Observer<Element>) -> Disposable
+}
+
+protocol ObserverType {
+    func on(_ event: Event<Element>)
+}
+----
 
 ===== Operators
 * Observable을 사용할 때 미리 정의된 Operator를 사용해 비동기 처리를 할 수 있음
