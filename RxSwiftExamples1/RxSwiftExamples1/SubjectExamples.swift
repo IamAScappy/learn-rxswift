@@ -10,9 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SubjectExamples {
-  private var disposeBag = DisposeBag()
-  
+class SubjectExamples: BaseClass {
   private let itsNotMyFault = "It’s not my fault."
   private let doOrDoNot = "Do. Or do not. There is no try."
   private let lackOfFaith = "I find your lack of faith disturbing."
@@ -146,9 +144,3 @@ class SubjectExamples {
     }
   }
 }
-
-
-
-
-
-

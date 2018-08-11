@@ -10,9 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ObservableExamples {
-  private var disposeBag: DisposeBag = DisposeBag()
-  
+class ObservableExamples: BaseClass {
   private let woong = "Woong"
   private let gamja = "Gamja"
   private let sj = "SJ"
@@ -218,18 +216,3 @@ extension ObservableExamples {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
