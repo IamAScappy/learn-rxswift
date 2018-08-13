@@ -6,11 +6,7 @@
 * https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples2[RxSwiftExamples 2]
 ** RxSwift, RxCocoa를 이용한 간단한 예제 
 * https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples3[RxSwiftExamples 3]
-** RxSwift, RxCocoa, RxDataSources를 이용해서 TableView, CollectionView DataSource 바인딩 
-* https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples4[RxSwiftExamples4]
-** Raywenderich RxSwift 연습문제 
-* https://github.com/yuaming/ios-issues[Rx.Issues]
-** RxSwift를 이용한 Github Issue App
+** RxSwift, RxCocoa, RxDataSources를 이용해서 TableView, CollectionView DataSource 바인딩 하는 방법
 
 ===== 참고
 * http://reactivex.io[ReactiveX]
