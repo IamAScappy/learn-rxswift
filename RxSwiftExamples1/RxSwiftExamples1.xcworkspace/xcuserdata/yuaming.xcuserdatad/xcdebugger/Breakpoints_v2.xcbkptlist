@@ -35,5 +35,69 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RxSwiftExamples1/CombiningOperatorExamples.swift"
+            timestampString = "555863217.227239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RxSwiftExamples1/CombiningOperatorExamples.swift"
+            timestampString = "555863217.227592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "execute()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 () -&gt; () in RxSwiftExamples1.CombiningOperatorExamples.execute() -&gt; ()"
+                  moduleName = "RxSwiftExamples1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuaming/dev/workspaces/learn-rxswift/RxSwiftExamples1/RxSwiftExamples1/CombiningOperatorExamples.swift"
+                  timestampString = "555860850.576175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in closure #5 () -&gt; () in RxSwiftExamples1.CombiningOperatorExamples.execute() -&gt; ()"
+                  moduleName = "RxSwiftExamples1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuaming/dev/workspaces/learn-rxswift/RxSwiftExamples1/RxSwiftExamples1/CombiningOperatorExamples.swift"
+                  timestampString = "555860850.57848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

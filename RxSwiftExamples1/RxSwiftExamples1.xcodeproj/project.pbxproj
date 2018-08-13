@@ -19,6 +19,7 @@
 		872A9C1121148BD700AAAE9D /* BlackJack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872A9C0E21148BD600AAAE9D /* BlackJack.swift */; };
 		872A9C1221148BD700AAAE9D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872A9C0F21148BD700AAAE9D /* main.swift */; };
 		8753B81F211F04C000E475CC /* TransformingOperatorExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8753B81E211F04C000E475CC /* TransformingOperatorExamples.swift */; };
+		87ABD3CE2121BFA800EDFA83 /* CombiningOperatorExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABD3CD2121BFA800EDFA83 /* CombiningOperatorExamples.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		872A9C0E21148BD600AAAE9D /* BlackJack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackJack.swift; sourceTree = "<group>"; };
 		872A9C0F21148BD700AAAE9D /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8753B81E211F04C000E475CC /* TransformingOperatorExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformingOperatorExamples.swift; sourceTree = "<group>"; };
+		87ABD3CD2121BFA800EDFA83 /* CombiningOperatorExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombiningOperatorExamples.swift; sourceTree = "<group>"; };
 		A224E0E4BAA0C225A569951D /* Pods-RxSwiftExamples1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExamples1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExamples1/Pods-RxSwiftExamples1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				870988B6211E918A00F4E9EF /* FilteringOperatorExamples.swift */,
 				870988B8211E91C500F4E9EF /* BaseClass.swift */,
 				8753B81E211F04C000E475CC /* TransformingOperatorExamples.swift */,
+				87ABD3CD2121BFA800EDFA83 /* CombiningOperatorExamples.swift */,
 			);
 			path = RxSwiftExamples1;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				872A9C1121148BD700AAAE9D /* BlackJack.swift in Sources */,
 				872A9BFF21148B7200AAAE9D /* AppDelegate.swift in Sources */,
 				872A9C1221148BD700AAAE9D /* main.swift in Sources */,
+				87ABD3CE2121BFA800EDFA83 /* CombiningOperatorExamples.swift in Sources */,
 				870988B9211E91C500F4E9EF /* BaseClass.swift in Sources */,
 				870988B7211E918A00F4E9EF /* FilteringOperatorExamples.swift in Sources */,
 				8753B81F211F04C000E475CC /* TransformingOperatorExamples.swift in Sources */,
