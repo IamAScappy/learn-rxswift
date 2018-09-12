@@ -8,21 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		51BA76E09A1E4C1FF71BC14A /* Pods_TimeBasedOperatorExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B5C67833BF0D222E30C4A4 /* Pods_TimeBasedOperatorExamples.framework */; };
+		8758CAC42149112300BE307F /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758CAC32149112300BE307F /* UIViewController+.swift */; };
 		875AE87421342DBC009BF162 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AE87321342DBC009BF162 /* AppDelegate.swift */; };
-		875AE87621342DBC009BF162 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AE87521342DBC009BF162 /* ViewController.swift */; };
 		875AE87921342DBC009BF162 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875AE87721342DBC009BF162 /* Main.storyboard */; };
 		875AE87B21342DBD009BF162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875AE87A21342DBD009BF162 /* Assets.xcassets */; };
 		875AE87E21342DBD009BF162 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875AE87C21342DBD009BF162 /* LaunchScreen.storyboard */; };
 		879ED2D121342FDF00E833F9 /* TimelineEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED2D021342FDF00E833F9 /* TimelineEvent.swift */; };
 		879ED2D32134310500E833F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED2D22134310500E833F9 /* Extensions.swift */; };
 		879ED2D7213431E500E833F9 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED2D6213431E500E833F9 /* TimelineView.swift */; };
+		87AD566F21490E5400848E2E /* BufferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AD566E21490E5400848E2E /* BufferViewController.swift */; };
+		87AD567121490E5D00848E2E /* ReplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AD567021490E5D00848E2E /* ReplayViewController.swift */; };
+		87AD567321490E6400848E2E /* TimeoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AD567221490E6400848E2E /* TimeoutViewController.swift */; };
+		87AD567521490E6E00848E2E /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AD567421490E6E00848E2E /* WindowViewController.swift */; };
+		87AD567721490E7C00848E2E /* DelayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AD567621490E7C00848E2E /* DelayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4097B7188E16FC07C8CE630F /* Pods-TimeBasedOperatorExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeBasedOperatorExamples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeBasedOperatorExamples/Pods-TimeBasedOperatorExamples.debug.xcconfig"; sourceTree = "<group>"; };
+		8758CAC32149112300BE307F /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		875AE87021342DBC009BF162 /* TimeBasedOperatorExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeBasedOperatorExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		875AE87321342DBC009BF162 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		875AE87521342DBC009BF162 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		875AE87821342DBC009BF162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		875AE87A21342DBD009BF162 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		875AE87D21342DBD009BF162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +35,11 @@
 		879ED2D021342FDF00E833F9 /* TimelineEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEvent.swift; sourceTree = "<group>"; };
 		879ED2D22134310500E833F9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		879ED2D6213431E500E833F9 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		87AD566E21490E5400848E2E /* BufferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferViewController.swift; sourceTree = "<group>"; };
+		87AD567021490E5D00848E2E /* ReplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayViewController.swift; sourceTree = "<group>"; };
+		87AD567221490E6400848E2E /* TimeoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutViewController.swift; sourceTree = "<group>"; };
+		87AD567421490E6E00848E2E /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
+		87AD567621490E7C00848E2E /* DelayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayViewController.swift; sourceTree = "<group>"; };
 		90B5C67833BF0D222E30C4A4 /* Pods_TimeBasedOperatorExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeBasedOperatorExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AFD34E599F2FA0212FA490 /* Pods-TimeBasedOperatorExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeBasedOperatorExamples.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeBasedOperatorExamples/Pods-TimeBasedOperatorExamples.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				875AE87321342DBC009BF162 /* AppDelegate.swift */,
-				875AE87521342DBC009BF162 /* ViewController.swift */,
 				875AE87721342DBC009BF162 /* Main.storyboard */,
 				875AE87A21342DBD009BF162 /* Assets.xcassets */,
 				875AE87C21342DBD009BF162 /* LaunchScreen.storyboard */,
@@ -76,6 +85,12 @@
 				879ED2D22134310500E833F9 /* Extensions.swift */,
 				879ED2D021342FDF00E833F9 /* TimelineEvent.swift */,
 				879ED2D6213431E500E833F9 /* TimelineView.swift */,
+				87AD566E21490E5400848E2E /* BufferViewController.swift */,
+				87AD567021490E5D00848E2E /* ReplayViewController.swift */,
+				87AD567221490E6400848E2E /* TimeoutViewController.swift */,
+				87AD567421490E6E00848E2E /* WindowViewController.swift */,
+				87AD567621490E7C00848E2E /* DelayViewController.swift */,
+				8758CAC32149112300BE307F /* UIViewController+.swift */,
 			);
 			path = TimeBasedOperatorExamples;
 			sourceTree = "<group>";
@@ -211,8 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				875AE87621342DBC009BF162 /* ViewController.swift in Sources */,
+				87AD566F21490E5400848E2E /* BufferViewController.swift in Sources */,
+				87AD567121490E5D00848E2E /* ReplayViewController.swift in Sources */,
+				8758CAC42149112300BE307F /* UIViewController+.swift in Sources */,
+				87AD567721490E7C00848E2E /* DelayViewController.swift in Sources */,
 				879ED2D7213431E500E833F9 /* TimelineView.swift in Sources */,
+				87AD567521490E6E00848E2E /* WindowViewController.swift in Sources */,
+				87AD567321490E6400848E2E /* TimeoutViewController.swift in Sources */,
 				875AE87421342DBC009BF162 /* AppDelegate.swift in Sources */,
 				879ED2D121342FDF00E833F9 /* TimelineEvent.swift in Sources */,
 				879ED2D32134310500E833F9 /* Extensions.swift in Sources */,

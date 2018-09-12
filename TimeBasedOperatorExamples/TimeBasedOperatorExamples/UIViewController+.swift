@@ -1,18 +1,12 @@
 //
-//  ViewController.swift
+//  UIViewController+.swift
 //  TimeBasedOperatorExamples
 //
-//  Created by yuaming on 2018. 8. 27..
+//  Created by yuaming on 2018. 9. 12..
 //  Copyright © 2018년 yuaming. All rights reserved.
 //
 
 import UIKit
-
-class ViewController: UIViewController {
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-}
 
 extension UIViewController {
   func setupHostView() -> UIView {
