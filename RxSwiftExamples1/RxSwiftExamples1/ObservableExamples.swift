@@ -45,6 +45,11 @@ class ObservableExamples: BaseClass {
      - Next Event를 통해 Observable 요소들이 방출되고 완료가 되면 Complete Event를 호출함. 원하는 값에 대해 접근할 수 있으며 이때 값은 옵셔널 형태임
      - Subscribe가 반환하는 값 타입은 Disposable임
      - onNext, onError, onCompleted 각자 원하는 값만 취함
+     
+     * 실행결과
+     Woong
+     Gamja
+     SJ
      */
     Utils.example(of: "Subscribe") {
       Observable.of(woong, gamja, sj).subscribe(onNext: { element in
@@ -57,6 +62,9 @@ class ObservableExamples: BaseClass {
      
      - Completed만 방출함
      - 의도적으로 아무런 타입이 아닌 Observable를 반환할 때 사용함
+     
+     * 실행결과
+     Completed
      */
     Utils.example(of: "Empty") {
       Observable<Void>.empty().subscribe(onNext: { element in
@@ -81,13 +89,27 @@ class ObservableExamples: BaseClass {
      - Observable의 사용이 끝나면 메모리 해제하거나 이벤트 방출을 취소할 때 dispose()를 호출함
      - 그러나, 직접 호출 하는 것은 좋은 코드가 아님
      - 직접 dispose() 호출하거나 DisposeBag에 담아서 disposed() 호출하지 않으면 메모리 릭이 발생함
+     
+     * 실행결과
+     next(Woong)
+     next(Gamja)
+     next(SJ)
+     completed
      */
     Utils.example(of: "Dispose") {
       Observable.of(woong, gamja, sj).subscribe { event in
+
         print(event)
       }.dispose()
     }
     
+    /*
+     * 실행결과
+     next(Woong)
+     next(Gamja)
+     next(SJ)
+     completed
+    */
     Utils.example(of: "DisposeBag") {
       Observable.of(woong, gamja, sj).subscribe {
         print($0)
@@ -101,6 +123,11 @@ class ObservableExamples: BaseClass {
      - Create를 이용하여 Observable를 만들 수 있음
      - onError 이벤트가 발생하면 Dispose 되는 것을 확인할 수 있음. 즉 메모리가 해제된다는 것을 알 수 있음
      - 만약, Error, Complete도 발생하지 않고 Dispose도 없다면 컴파일러가 메모리 릭이 발생하는 것을 경고함
+     
+     * 결과
+     R2-D2
+     Error: OU812
+     Disposed
      */
     Utils.example(of: "Create") {
       Observable<String>.create { observer in
@@ -123,6 +150,12 @@ class ObservableExamples: BaseClass {
      * Do
      
      - do를 통해 부수효과를 추가할 수 있음. 하지만 이벤트 방출에 영향을 주지 않음. 왜냐하면 subscribe 가지고 있지 않기 때문임
+     
+     * 실행결과
+     Do: About to subscribe
+     Subscribe: Completed
+     Subscribe: Disposed
+     Do: Disposed
      */
     Utils.example(of: "Do") {
       // empty, subscribe와 never의 do 출력결과 순서가 미묘하게 다른 이유?
@@ -160,6 +193,9 @@ class ObservableExamples: BaseClass {
      3. Maybe
      - One Next, Completed Event or Error Event
      - https://github.com/ReactiveX/RxSwift/blob/master/Documentation/Traits.md#creating-a-maybe
+     
+     * 실행결과
+     fileNotFound
      */
     Utils.example(of: "Single") {
       loadText(from: "ANewHope").subscribe {

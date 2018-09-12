@@ -16,6 +16,12 @@ class CombiningOperatorExamples: BaseClass {
     // StartWith
     // - Observer에서 초기값 받는 여부가 중요함
     // - Observable에 무슨 일이 일어나더라도 초기값이 붙는 것을 보장함
+    
+    // 실행결과
+    // 1
+    // 2
+    // 3
+    // 4
     Utils.example(of: "StartWith") {
       let numbers = Observable.of(2, 3, 4)
       
@@ -28,6 +34,17 @@ class CombiningOperatorExamples: BaseClass {
     // Observable.Concat
     // - Observable Sequence끼리 연결함
     // - 내부에서 에러가 나면 Concat 되어 있는 Observable에서 에러가 발생하여 종료함
+    
+    // 실행결과
+    // 1
+    // 2
+    // 3
+    // 4
+    // 5
+    // 6
+    // 7
+    // 8
+    // 9
     Utils.example(of: "Observable.Concat") {
       let first = Observable.of(1, 2, 3)
       let second = Observable.of(4, 5, 6)
@@ -41,6 +58,14 @@ class CombiningOperatorExamples: BaseClass {
     
     // Concat
     // - Observable.Concat 과 비슷함. 결합할 때 두 개의 Observable이 반드시 타입이 같아야 함
+    
+    // 실행결과
+    // Berlin
+    // Münich
+    // Frankfurt
+    // Madrid
+    // Barcelona
+    // Valencia
     Utils.example(of: "Concat") {
       let germanCities = Observable.of("Berlin", "Münich", "Frankfurt")
       let spanishCities = Observable.of("Madrid", "Barcelona", "Valencia")
@@ -55,6 +80,14 @@ class CombiningOperatorExamples: BaseClass {
     // ConcatMap
     // - Subscribe 되기 전, 각각 Observable Sequence가 Concat이 된다는 것을 보장함
     // - FlatMap가 비슷함
+    
+    // 실행결과
+    // Berlin
+    // Münich
+    // Frankfurt
+    // 서울
+    // 부산
+    // 대구
     Utils.example(of: "ConcatMap") {
       let sequences = [
         "Germany": Observable.of("Berlin", "Münich", "Frankfurt"),
@@ -76,6 +109,14 @@ class CombiningOperatorExamples: BaseClass {
     // Merge
     // - 결과를 돌려보면 규칙이 정해져 있지 않음. Observable가 도착하는대로 이벤트를 방출함
     // - 어떠한 Sequence라도 에러를 방출하면 Merge도 에러를 방출하고 이벤트를 종료함
+    
+    // 실행결과
+    // Right :Madrid
+    // Left: Berlin
+    // Right :Barcelona
+    // Left: Münich
+    // Right :Valencia
+    // Left: Frankfurt
     Utils.example(of: "Merge") {
       let left = PublishSubject<String>()
       let right = PublishSubject<String>()
@@ -110,6 +151,15 @@ class CombiningOperatorExamples: BaseClass {
     // - 결합한 Observable가 하나의 값이 방출하기 전까지 아무 일이 일어나지 않음. 이벤트가 방출하고 나면 클로저 타입의 Observable가 생성됨
     // - Map처럼 클로저 타입으로 Observable가 생성되기 때문에 새로운 유형으로 전환하기 좋음
     // - CombineLatest는 Sequence 타입이 달라도 됨
+    
+    // 실행결과
+    // > Sending a value to Left
+    // > Sending a value to Right
+    // Hello, world
+    // > Sending another value to Right
+    // Hello, RxSwift
+    // > Sending another value to Left
+    // Have a good day, RxSwift
     Utils.example(of: "CombineLast") {
       let left = PublishSubject<String>()
       let right = PublishSubject<String>()
@@ -134,6 +184,9 @@ class CombiningOperatorExamples: BaseClass {
       disposable.dispose()
     }
     
+    // 실행결과
+    // 12/09/2018
+    // 12 September 2018
     Utils.example(of: "Combine user choice and value") {
       let choice: Observable<DateFormatter.Style> = Observable.of(.short, .long)
       let dates: Observable<Date> = Observable.of(Date())
@@ -150,6 +203,15 @@ class CombiningOperatorExamples: BaseClass {
     }
     
     // Array로도 결합 가능함
+    
+    // 실행결과
+    // > Sending a value to Left
+    // > Sending a value to Right
+    // Hello - world
+    // > Sending another value to Right
+    // Hello - RxSwift
+    // > Sending another value to Left
+    // Have a good day - RxSwift
     Utils.example(of: "CombineLatest Array") {
       let left = PublishSubject<String>()
       let right = PublishSubject<String>()
@@ -179,6 +241,12 @@ class CombiningOperatorExamples: BaseClass {
     // - Observable이 새 값이 각각 방출되기 기다리다가 둘 중 하나 Observable가 완료되면 Zip도 완료함
     // - 이벤트 요소가 남아있어도 Zip은 기다려주지 않음
     // - Indexed Sequencing
+    
+    // 실행결과
+    // It's sunny in Lisbon
+    // It's cloudy in Copenhagen
+    // It's cloudy in London
+    // It's sunny in Madrid
     Utils.example(of: "Zip") {
       enum Weatehr {
         case cloudy
@@ -202,6 +270,10 @@ class CombiningOperatorExamples: BaseClass {
     // WithLatestFrom
     // - 두 개 Observable을 합성하지만, 한 쪽에서 이벤트가 발생할 때 합성함. 만약 이벤트가 일어나지 않는다면 Skip됨
     // - textField에서 이벤트가 계속 일어나더라도 button에서 반응이 없다면 이벤트가 Skip되지만 button에서 이벤트가 일어나는 순간 textField 이벤트와 합성이 됨
+    
+    // 실행결과
+    // P
+    // P
     Utils.example(of: "WithLatestFrom") {
       let button = PublishSubject<Void>()
       let textField = PublishSubject<String>()
@@ -221,6 +293,10 @@ class CombiningOperatorExamples: BaseClass {
     // Switching
     // Amb
     // - 처음 발생한 Observable만 사용함
+    
+    // 실행결과
+    // Copenhagen
+    // Vienna
     Utils.example(of: "Amb") {
       let left = PublishSubject<String>()
       let right = PublishSubject<String>()
@@ -241,6 +317,12 @@ class CombiningOperatorExamples: BaseClass {
     
     // SwitchLatest
     // - Observable가 바뀌면 해당 Observable가 실행되는 것을 확인할 수 있음
+    
+    // 실행결과
+    // Some text from sequence one
+    // More text from sequence two
+    // Hey it's three. I win :3
+    // Hey it's three. I win
     Utils.example(of: "SwitchLatest") {
       let one = PublishSubject<String>()
       let two = PublishSubject<String>()
@@ -278,6 +360,9 @@ class CombiningOperatorExamples: BaseClass {
     // - 기본값으로 방출한 이벤트 값을 연산하여 하나의 값으로 나옴
     // - public func reduce<A>(_ seed: A, accumulator: @escaping (A, Self.E) throws -> A) -> RxSwift.Observable<A>
     // - public func reduce<A, R>(_ seed: A, accumulator: @escaping (A, Self.E) throws -> A, mapResult: @escaping (A) throws -> R) -> RxSwift.Observable<R>
+    
+    // 실행결과
+    // 25
     Utils.example(of: "Reduce") {
       let source = Observable.of(1, 3, 5, 7, 9)
       
@@ -292,6 +377,13 @@ class CombiningOperatorExamples: BaseClass {
     // - 총합, 통계, 상태 등 여러 곳에서 사용할 수 있음
     // - 들어오는 이벤트 타입과 변형하려는 타입이 같아야 함
     // - public func scan<A>(_ seed: A, accumulator: @escaping (A, Self.E) throws -> A) -> RxSwift.Observable<A>
+    
+    // 실행결과
+    // 1
+    // 4
+    // 9
+    // 16
+    // 25
     Utils.example(of: "Scan") {
       let source = Observable.of(1, 3, 5, 7, 9)
       

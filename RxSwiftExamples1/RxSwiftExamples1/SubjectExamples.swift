@@ -35,6 +35,12 @@ class SubjectExamples: BaseClass {
      
      - Subscribe 전 이벤트는 방출하지 않음. Subscribe 후 이벤트만 방출함
      - 어떤 이벤트가 종료가 되었다는 것을 알릴 때 사용하면 유용함
+     
+     * 실행결과
+     1) Do. Or do not. There is no try.
+     2) Your eyes can deceive you. Don’t trust them.
+     2) completed
+     3) completed
      */
     Utils.example(of: "PublishSubject") {
       let quotes = PublishSubject<String>()
@@ -76,6 +82,13 @@ class SubjectExamples: BaseClass {
      
      - PublishSubject와 거의 비슷함 BehaviorSubject는 반드시 값으로 초기화를 해줘야 함
      - 즉, Observer에게 구독하기 전 마지막 이벤트 혹은 초기값을 방출함
+     
+     * 실행결과
+     1) Luke, I am your father
+     1) It’s not my fault.
+     1) Your eyes can deceive you. Don’t trust them.
+     1) completed
+     2) completed
      */
     Utils.example(of: "BehaviorSubject") {
       let quotes = BehaviorSubject<String>(value: iAmYourFather)
@@ -98,6 +111,14 @@ class SubjectExamples: BaseClass {
      * ReplaySubject
      
      - 미리 정해진 사이즈 만큼 가장 최근의 이벤트를 새로운 Subscriber에게 전달함
+     
+     * 실행결과
+     1) Your eyes can deceive you. Don’t trust them.
+     1) Luke, I am your father
+     1) It’s not my fault.
+     1) May the 4th be with you.
+     2) It’s not my fault.
+     2) May the 4th be with you.
      */
     Utils.example(of: "ReplaySubject") {
       disposeBag = DisposeBag()
@@ -128,6 +149,9 @@ class SubjectExamples: BaseClass {
        
        - RxSwift 4.0에서 Variable DEPRECATED 됨
        - BehaviorRelay를 사용하자. Error나 Completed에서 종료하지 않음
+       
+       * 실행결과
+       1) May the 4th be with you.
        */
       // let variable = Variable(mayThe4thBeWithYou)
       let behaviorRelay = BehaviorRelay(value: mayThe4thBeWithYou)
