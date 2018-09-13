@@ -14,15 +14,19 @@ import CoreLocation
 import MapKit
 
 class ApiController {
-  
-  /// The shared instance
   static var shared = ApiController()
   
-  /// Create you own on https://home.openweathermap.org/users/sign_up
+  /**
+   * API Key
+   * https://home.openweathermap.org/users/sign_up
+   */
   private let apiKey = "API Key"
   
-  /// API base URL
-  // http://blowmj.tistory.com/entry/iOS-iOS9-App-Transport-Security-설정법
+  
+  /**
+   * Base URL
+   * http://blowmj.tistory.com/entry/iOS-iOS9-App-Transport-Security-설정법
+   */
   let baseURL = URL(string: "http://api.openweathermap.org/data/2.5")!
   
   init() {
@@ -31,8 +35,7 @@ class ApiController {
     }
   }
   
-  //MARK: - Api Calls
-  
+  // MARK: - Api Calls
   func currentWeather(city: String) -> Observable<Weather> {
     return buildRequest(pathComponent: "weather", params: [("q", city)]).map() { json in
       return Weather(
@@ -65,7 +68,6 @@ class ApiController {
    * Private method to build a request with RxCocoa
    */
   private func buildRequest(method: String = "GET", pathComponent: String, params: [(String, String)]) -> Observable<JSON> {
-    
     let url = baseURL.appendingPathComponent(pathComponent)
     var request = URLRequest(url: url)
     let keyQueryItem = URLQueryItem(name: "appid", value: apiKey)
@@ -97,7 +99,6 @@ class ApiController {
   /**
    * Weather information and map overlay
    */
-  
   struct Weather {
     let cityName: String
     let temperature: Int

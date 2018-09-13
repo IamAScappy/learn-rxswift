@@ -11,13 +11,7 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
-// MARK:
-// - 일단 따라치기 했으나 헷갈림
-// - Proxy 패턴이 헷갈림. 찾아보기
-// - DelegateProxy.swift, DelegateProxyType.swift가 무엇인가?
-// - CoreLocation에서 CLLocationManager, CLLocationManagerDelegate가 무슨 역할을 하는지 알아봐야 할듯
-// - RxCLLocationManagerDelegateProxy 무엇인가?
-// - methodInvoked ?
+// TODO: - 일단 따라치기 했으나 헷갈림. Proxy 패턴 /  DelegateProxy.swift / DelegateProxyType.swift / RxCLLocationManagerDelegateProxy / CoreLocation / methodInvoked
 
 // CLLocationManager 확장을 통해 현재 위치 확인하기
 // - RxCocoa는 UI뿐만 아니라, Apple의 공식 프레임워크들을 래핑하여 간단하고 강력한 방법으로 사용자화함
