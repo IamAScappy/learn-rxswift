@@ -1,4 +1,4 @@
-target 'RxCocoaExamples' do
+target 'RxWeather' do
   use_frameworks!
 
   pod 'RxSwift'
