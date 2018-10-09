@@ -11,10 +11,9 @@ import RxSwift
 import SwiftyJSON
 
 class ApiController {
-  
   static let shared = ApiController()
   
-  private let apiKey = "CWEu9CfACLBxvUnymhuIapfk7mSfFvVO"
+  private let apiKey = "Api Key"
   
   func search(text: String) -> Observable<[JSON]> {
     let url = URL(string: "http://api.giphy.com/v1/gifs/search")!
@@ -29,6 +28,8 @@ class ApiController {
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    return Observable.just([])
+    return URLSession.shared.rx.json(request: request).map({ json in
+      return json["data"].array ?? []
+    })
   }
 }

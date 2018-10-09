@@ -12,14 +12,14 @@ import SwiftyJSON
 
 class MainTableViewController: UITableViewController {
   let searchController = UISearchController(searchResultsController: nil)
-  let bag = DisposeBag()
+  let disposeBag = DisposeBag()
   var gifs = [JSON]()
   let search = BehaviorSubject(value: "")
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    title = "iGif"
+    title = "RxGif"
     
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
@@ -38,7 +38,7 @@ class MainTableViewController: UITableViewController {
         self.gifs = result
         self.tableView.reloadData()
       })
-      .disposed(by:bag)
+      .disposed(by:disposeBag)
   }
   
   // MARK: - Table view data source
