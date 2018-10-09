@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,7 +17,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RxCocoaExamples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RxWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -88,6 +86,14 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XyX-xB-TNS">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek5-Ug-w5N">
+                                <rect key="frame" x="260" y="612" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RTu-kU-Xbv"/>
+                                    <constraint firstAttribute="width" constant="44" id="ggO-lm-AgR"/>
+                                </constraints>
+                                <state key="normal" image="key"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -107,6 +113,7 @@
                             <constraint firstItem="jQQ-9b-2rA" firstAttribute="top" secondItem="aYm-dp-fOW" secondAttribute="bottom" constant="8" id="MFT-Kh-TpX"/>
                             <constraint firstItem="fn5-hY-7os" firstAttribute="top" secondItem="jQQ-9b-2rA" secondAttribute="bottom" constant="8" id="Rba-DY-MEe"/>
                             <constraint firstItem="jQQ-9b-2rA" firstAttribute="top" secondItem="x4a-i8-beX" secondAttribute="bottom" constant="8" id="VFJ-kt-pMI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ek5-Ug-w5N" secondAttribute="bottom" constant="11" id="abs-Xf-K25"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eDk-er-9Bj" secondAttribute="bottom" constant="11" id="gbf-EF-pcY"/>
                             <constraint firstItem="yBe-im-BiH" firstAttribute="top" secondItem="CvG-51-WJq" secondAttribute="bottom" constant="32" id="khk-GW-bQ8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yBe-im-BiH" secondAttribute="bottom" id="lTi-dH-9eS"/>
@@ -115,6 +122,7 @@
                             <constraint firstItem="jQQ-9b-2rA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="ruZ-Hl-zEh"/>
                             <constraint firstItem="aYm-dp-fOW" firstAttribute="trailing" secondItem="jQQ-9b-2rA" secondAttribute="trailing" id="tOM-kL-ZZw"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="grA-cI-HFT" secondAttribute="bottom" constant="11" id="tOs-01-ZH2"/>
+                            <constraint firstItem="grA-cI-HFT" firstAttribute="leading" secondItem="ek5-Ug-w5N" secondAttribute="trailing" constant="11" id="xIq-yT-Rsz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -123,6 +131,7 @@
                         <outlet property="geoLocationButton" destination="eDk-er-9Bj" id="UaZ-g3-hp7"/>
                         <outlet property="humidityLabel" destination="aYm-dp-fOW" id="ACB-jg-cWC"/>
                         <outlet property="iconLabel" destination="jQQ-9b-2rA" id="CFl-ge-t02"/>
+                        <outlet property="keyButton" destination="ek5-Ug-w5N" id="v8q-tz-I1A"/>
                         <outlet property="mapButton" destination="grA-cI-HFT" id="mie-7g-Pd9"/>
                         <outlet property="mapView" destination="yBe-im-BiH" id="Tka-pS-Fuk"/>
                         <outlet property="searchCityName" destination="CvG-51-WJq" id="yXf-Qu-AkM"/>
@@ -135,6 +144,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="key" width="32" height="32"/>
         <image name="map" width="32" height="31"/>
         <image name="place-location" width="24" height="32"/>
     </resources>

@@ -23,8 +23,12 @@ class ViewController: UIViewController {
   @IBOutlet weak var humidityLabel: UILabel!
   @IBOutlet weak var iconLabel: UILabel!
   @IBOutlet weak var cityNameLabel: UILabel!
+  @IBOutlet weak var keyButton: UIButton!
+  
+  var keyTextField: UITextField?
   
   var disposeBag: DisposeBag = DisposeBag()
+  
   fileprivate var cache = [String: Weather]()
   fileprivate let maxAttempts = 4
   
@@ -34,6 +38,10 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     style()
+    
+    keyButton.rx.tap.subscribe(onNext: {
+      self.requestKey()
+    }).disposed(by: disposeBag)
     
     // MARK: - Part 1
     
@@ -173,7 +181,9 @@ class ViewController: UIViewController {
             guard let strongSelf = self else { return }
             
             DispatchQueue.main.async {
-              InfoView.showIn(viewController: strongSelf, message: "An error occurred")
+              DispatchQueue.main.async {
+                strongSelf.showError(error: e)
+              }
             }
           })
           .catchErrorJustReturn(ApiController.Weather.empty)
@@ -371,6 +381,24 @@ class ViewController: UIViewController {
     } else {
       InfoView.showIn(viewController: self, message: "An error occurred")
     }
+  }
+  
+  private func requestKey() {
+    func configurationTextField(textField: UITextField!) {
+      self.keyTextField = textField
+    }
+    
+    let alert = UIAlertController(title: "Api Key",
+                                  message: "Add the api key:",
+                                  preferredStyle: UIAlertController.Style.alert)
+    
+    alert.addTextField(configurationHandler: configurationTextField)
+    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler:{ (UIAlertAction) in
+      ApiController.shared.apiKey.onNext(self.keyTextField?.text ?? "")
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive))
+    self.present(alert, animated: true)
   }
 }
 
