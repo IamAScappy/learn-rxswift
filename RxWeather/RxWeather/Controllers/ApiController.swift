@@ -20,8 +20,8 @@ class ApiController {
    * API Key
    * https://home.openweathermap.org/
    */
-  private let apiKey = "f090412f1def23d1c15e0e51c619a742"
   
+  let apiKey = BehaviorSubject(value: "API Key")
   
   /**
    * Base URL
@@ -33,6 +33,14 @@ class ApiController {
     Logging.URLRequests = { request in
       return true
     }
+  }
+  
+  enum ApiError: Error {
+    case cityNotFound
+    case serverFailure
+    // 만약 세션 값이 유효하지 않거나 없는 경우에 에러를 어떻게 처리해야 할까? 정답은 없지만, 빈 값이나 에러를 반환해야 하는걸까?
+    
+    case invalidKey
   }
   
   // MARK: - Api Calls
@@ -70,7 +78,7 @@ class ApiController {
   private func buildRequest(method: String = "GET", pathComponent: String, params: [(String, String)]) -> Observable<JSON> {
     let url = baseURL.appendingPathComponent(pathComponent)
     var request = URLRequest(url: url)
-    let keyQueryItem = URLQueryItem(name: "appid", value: apiKey)
+    let keyQueryItem = URLQueryItem(name: "appid", value: try? self.apiKey.value())
     let unitsQueryItem = URLQueryItem(name: "units", value: "metric")
     let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
     
@@ -93,7 +101,17 @@ class ApiController {
     
     let session = URLSession.shared
     
-    return session.rx.data(request: request).map { try JSON(data: $0) }
+    return session.rx.response(request: request).map() { response, data in
+      if 200..<300 ~= response.statusCode {
+        return try JSON(data: data)
+      } else if response.statusCode == 401 {
+          throw ApiError.invalidKey
+      } else if 400..<500 ~= response.statusCode {
+        throw ApiError.cityNotFound
+      } else {
+        throw ApiError.serverFailure
+      }
+    }
   }
   
   /**
