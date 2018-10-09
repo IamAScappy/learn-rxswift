@@ -134,9 +134,9 @@ class ApiController {
         CLLocationCoordinate2D(latitude: lat - 0.25, longitude: lon - 0.25),
         CLLocationCoordinate2D(latitude: lat + 0.25, longitude: lon + 0.25)
       ]
-      let points = coordinates.map { MKMapPointForCoordinate($0) }
+      let points = coordinates.map { MKMapPoint.init($0) }
       let rects = points.map { MKMapRect(origin: $0, size: MKMapSize(width: 0, height: 0)) }
-      let fittingRect = rects.reduce(MKMapRectNull, MKMapRectUnion)
+      let fittingRect = rects.reduce(MKMapRect.null, MKMapRectUnion)
       return Overlay(icon: icon, coordinate: coordinate, boundingMapRect: fittingRect)
     }
     
@@ -207,10 +207,10 @@ public func iconNameToChar(icon: String) -> String {
 }
 
 fileprivate func imageFromText(text: NSString, font: UIFont) -> UIImage {
-  let size = text.size(withAttributes: [NSAttributedStringKey.font: font])
+  let size = text.size(withAttributes: [NSAttributedString.Key.font: font])
   
   UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-  text.draw(at: CGPoint(x: 0, y:0), withAttributes: [NSAttributedStringKey.font: font])
+  text.draw(at: CGPoint(x: 0, y:0), withAttributes: [NSAttributedString.Key.font: font])
   
   let image = UIGraphicsGetImageFromCurrentImageContext()
   UIGraphicsEndImageContext()
