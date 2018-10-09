@@ -2,9 +2,10 @@
 
 ===== 목차
 * https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1[RxSwiftExamples 1] => Raywenderich RxSwift를 이용해서 개념 정리
-** https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1/RxSwiftExamples1[Observable, Subject, Filtering Operators, Combining Operators, Transforming Operators] 
+** https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples1/RxSwiftExamples1[Observable, Subject, Filtering Operators, Combining Operators, Transforming Operators, Scheduler] 
 ** https://github.com/yuaming/learn-rxswift/tree/master/TimeBasedOperatorExamples[Time Based Operator Examples]
-** https://github.com/yuaming/learn-rxswift/tree/master/RxWeather[RxWeather] => 간단한 날씨 앱 
+** https://github.com/yuaming/learn-rxswift/tree/master/RxWeather[RxWeather] => 날씨 앱 
+** https://github.com/yuaming/learn-rxswift/tree/master/RxGif[RxGif] => GIF 검색 앱
 * https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples2[RxSwiftExamples 2] => RxSwift, RxCocoa를 이용한 간단한 예제 
 * https://github.com/yuaming/learn-rxswift/tree/master/RxSwiftExamples3[RxSwiftExamples 3] => RxSwift, RxCocoa, RxDataSources를 이용해서 TableView, CollectionView DataSource 바인딩 하는 방법
 
