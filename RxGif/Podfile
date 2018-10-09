@@ -1,0 +1,21 @@
+use_frameworks!
+
+def my_pods
+  pod 'RxSwift'
+  pod 'SwiftyJSON'
+  pod 'Gifu'
+end
+
+target 'RxGif' do
+  my_pods
+end
+
+      
+target 'RxGifTests' do
+  my_pods
+  pod 'Nimble'
+  pod 'RxNimble'
+  pod 'RxBlocking'
+  pod 'OHHTTPStubs'
+  pod 'OHHTTPStubs/Swift'
+end
