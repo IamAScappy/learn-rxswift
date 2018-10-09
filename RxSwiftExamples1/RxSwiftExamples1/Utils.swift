@@ -19,6 +19,6 @@ class Utils: NSObject {
   }
   
   static func print<T: CustomStringConvertible>(label: String, event: Event<T>) {
-    Swift.print(label, event.element ?? event.error ?? event)
+    Swift.print(label, event.element ?? (event.error ?? event) ?? String(""))
   }
 }

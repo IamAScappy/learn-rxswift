@@ -12,6 +12,8 @@ import Foundation
 //SubjectExamples().execute()
 //FilteringOperatorExamples().execute()
 //TransformingOperatorExamples().execute()
-CombiningOperatorExamples().execute()
+//CombiningOperatorExamples().execute()
+
+SchedulerExamples().execute()
 
 // BlackJack().play()

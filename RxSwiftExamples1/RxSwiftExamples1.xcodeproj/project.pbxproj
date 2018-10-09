@@ -19,6 +19,7 @@
 		872A9C1121148BD700AAAE9D /* BlackJack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872A9C0E21148BD600AAAE9D /* BlackJack.swift */; };
 		872A9C1221148BD700AAAE9D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872A9C0F21148BD700AAAE9D /* main.swift */; };
 		8753B81F211F04C000E475CC /* TransformingOperatorExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8753B81E211F04C000E475CC /* TransformingOperatorExamples.swift */; };
+		87785CC8216CBAA1009FE812 /* SchedulerExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87785CC7216CBAA1009FE812 /* SchedulerExamples.swift */; };
 		87ABD3CE2121BFA800EDFA83 /* CombiningOperatorExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABD3CD2121BFA800EDFA83 /* CombiningOperatorExamples.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		872A9C0E21148BD600AAAE9D /* BlackJack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackJack.swift; sourceTree = "<group>"; };
 		872A9C0F21148BD700AAAE9D /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8753B81E211F04C000E475CC /* TransformingOperatorExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformingOperatorExamples.swift; sourceTree = "<group>"; };
+		87785CC7216CBAA1009FE812 /* SchedulerExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerExamples.swift; sourceTree = "<group>"; };
 		87ABD3CD2121BFA800EDFA83 /* CombiningOperatorExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombiningOperatorExamples.swift; sourceTree = "<group>"; };
 		A224E0E4BAA0C225A569951D /* Pods-RxSwiftExamples1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExamples1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExamples1/Pods-RxSwiftExamples1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 				870988B8211E91C500F4E9EF /* BaseClass.swift */,
 				8753B81E211F04C000E475CC /* TransformingOperatorExamples.swift */,
 				87ABD3CD2121BFA800EDFA83 /* CombiningOperatorExamples.swift */,
+				87785CC7216CBAA1009FE812 /* SchedulerExamples.swift */,
 			);
 			path = RxSwiftExamples1;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				TargetAttributes = {
 					872A9BFA21148B7200AAAE9D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -185,7 +189,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftExamples1/Pods-RxSwiftExamples1-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RxSwiftExamples1/Pods-RxSwiftExamples1-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
@@ -196,7 +200,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftExamples1/Pods-RxSwiftExamples1-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxSwiftExamples1/Pods-RxSwiftExamples1-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		29AACA403DA8A5610263DCBD /* [CP] Check Pods Manifest.lock */ = {
@@ -233,6 +237,7 @@
 				8753B81F211F04C000E475CC /* TransformingOperatorExamples.swift in Sources */,
 				870988B1211E88AE00F4E9EF /* ObservableExamples.swift in Sources */,
 				870988B3211E897000F4E9EF /* SubjectExamples.swift in Sources */,
+				87785CC8216CBAA1009FE812 /* SchedulerExamples.swift in Sources */,
 				870988B5211E8B2E00F4E9EF /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +385,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuaming.RxSwiftExamples1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -400,7 +405,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuaming.RxSwiftExamples1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
