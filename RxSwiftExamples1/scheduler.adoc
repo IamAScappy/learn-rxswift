@@ -1,8 +1,11 @@
 = Scheduler
 
-image:./images/observeOn.png[]
+===== observeOn
+image:../images/observeOn.png[]
 
-image:./images/subscribeOn.png[]
+===== subscribeOn
+image:../images/subscribeOn.png[]
 
-image:./images/thread-scheduler.png[]
+===== Schduler, Thread
+image:../images/thread-scheduler.png[]
 
