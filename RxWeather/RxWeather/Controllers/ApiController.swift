@@ -18,9 +18,9 @@ class ApiController {
   
   /**
    * API Key
-   * https://home.openweathermap.org/users/sign_up
+   * https://home.openweathermap.org/
    */
-  private let apiKey = "API Key"
+  private let apiKey = "f090412f1def23d1c15e0e51c619a742"
   
   
   /**
@@ -136,7 +136,7 @@ class ApiController {
       ]
       let points = coordinates.map { MKMapPoint.init($0) }
       let rects = points.map { MKMapRect(origin: $0, size: MKMapSize(width: 0, height: 0)) }
-      let fittingRect = rects.reduce(MKMapRect.null, MKMapRectUnion)
+      let fittingRect = rects.reduce(MKMapRect.null) { $0.union($1) }
       return Overlay(icon: icon, coordinate: coordinate, boundingMapRect: fittingRect)
     }
     
